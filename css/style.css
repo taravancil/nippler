@@ -13,7 +13,7 @@ h1 {
   padding: .5em;
 }
 
-h1:before, h1:after {
+h1.title:before, h1.title:after {
   content: ' - - - ';
 }
 
