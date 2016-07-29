@@ -15,3 +15,15 @@ h1 {
 h1:before, h1:after {
   content: ' - - - ';
 }
+
+.intro__lead {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+/* blue #0074d9*/
+
+.intro__lead em {
+  color: #f012be;
+  border-bottom: 2px solid;
+  padding: 0 .2em .15em .1em;
+}
