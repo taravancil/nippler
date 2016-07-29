@@ -25,3 +25,65 @@ h1.title:before, h1.title:after {
   border-bottom: 2px solid;
   padding: 0 .2em .15em .1em;
 }
+
+.footer {
+  font-size: 1.1em;
+}
+
+.footer__section {
+  display: flex;
+}
+
+.footer__section.etc {
+  background: #715AFF;
+  padding: 0 .5em;
+  margin-top: .8em;
+}
+
+.footer__links {
+  justify-content: center;
+  color: #715AFF;
+}
+
+.footer__link {
+  flex-basis: 33%;
+  margin: .5em;
+  border: 2px solid;
+  border-radius: 3px;
+  line-height: 100%;
+  max-width: 110px;
+  height: 100%;
+}
+
+.footer__link a {
+  display: block;
+  height: 100%;
+  padding: .5em;
+}
+
+.footer__link:hover {
+  background: rgba(255,255,255, .4);
+  cursor: pointer;
+}
+
+.footer__credits, .footer__icon {
+  background: #715AFF;
+  color: #66E5FF;
+  flex-basis: 50%;
+}
+
+.footer__icon {
+  text-align: right;
+}
+
+.footer__credits {
+  text-align: left;
+}
+
+.footer__credits a {
+  text-decoration: underline;
+}
+
+.footer__credits a:hover {
+  font-weight: bold;
+}
