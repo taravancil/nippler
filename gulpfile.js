@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
 var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
 gulp.task('minify-html', function() {
   return gulp.src('html/*')
@@ -20,7 +21,7 @@ gulp.task('build-css', function() {
     .pipe(cssmin())
     .pipe(concat('style.min.css'))
     .pipe(gulp.dest('build/css'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(reload({stream: true}));
 })
 
 gulp.task('build', ['minify-html', 'build-css']);
@@ -33,5 +34,5 @@ gulp.task('server', function() {
 
 gulp.task('watch', ['build', 'server'], function() {
   gulp.watch('css/*', ['build-css']);
-  gulp.watch('html/*', ['minify-html', browserSync.reload()]);
+  gulp.watch('html/*', ['minify-html', reload]);
 });
