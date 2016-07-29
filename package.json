@@ -6,8 +6,17 @@
     "url": "git+https://github.com/taravancil/nippler.org.git"
   },
   "author": "Tara Vancil <tbvanc@gmail.com>",
+  "scripts": {
+    "build": "gulp build"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/taravancil/nippler.org/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^2.0.0"
   }
 }
