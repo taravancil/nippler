@@ -7,13 +7,15 @@
   },
   "author": "Tara Vancil <tbvanc@gmail.com>",
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/taravancil/nippler.org/issues"
   },
   "devDependencies": {
+    "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
