@@ -72,10 +72,6 @@ h1.title:before, h1.title:after {
   flex-basis: 50%;
 }
 
-.footer__icon {
-  text-align: right;
-}
-
 .footer__credits {
   text-align: left;
 }
@@ -86,4 +82,37 @@ h1.title:before, h1.title:after {
 
 .footer__credits a:hover {
   font-weight: bold;
+}
+
+.footer__icon {
+  text-align: right;
+}
+
+.footer__icon:hover {
+  cursor: pointer;
+}
+
+.footer__icon:hover:before, .footer__icon:focus:before {
+  content: 'Scandalous!';
+  margin-right: 7px;
+  font-size: .8em;
+  font-style: italic;
+}
+
+.footer__icon:hover .icon__redacted:after {
+  display: none;
+}
+
+.icon__redacted {
+  position: relative;
+}
+
+.icon__redacted:after {
+  position: absolute;
+  content: '';
+  background: #66E5FF;
+  left: -1px;
+  top: 9px;
+  width: 15px;
+  height: 6px;
 }
