@@ -1,16 +1,14 @@
 body {
-  background: #01FF70;
+  background: #66FFAD;
+  background-image: linear-gradient(to bottom right, #66FFAD, #66E5FF);
   color: #111;
   text-align: center;
   font-family: Lato, Helvetica, sans-serif;
-  border-top: 5px solid #f012be;
 }
 
 h1 {
-  color: #f012be;
+  color: #715AFF;
   font-size: 2.2em;
-  margin: auto;
-  padding: .5em;
 }
 
 h1.title:before, h1.title:after {
@@ -23,7 +21,7 @@ h1.title:before, h1.title:after {
 }
 
 .intro__lead em {
-  color: #f012be;
+  color: #715AFF;
   border-bottom: 2px solid;
   padding: 0 .2em .15em .1em;
 }
