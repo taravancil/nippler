@@ -4,3 +4,14 @@ body {
   text-align: center;
   font-family: Lato, Helvetica, sans-serif;
 }
+
+h1 {
+  color: #f012be;
+  font-size: 2.2em;
+  margin: auto;
+  padding: .5em;
+}
+
+h1:before, h1:after {
+  content: ' - - - ';
+}
