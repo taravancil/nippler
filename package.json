@@ -1,0 +1,13 @@
+{
+  "name": "nippler.org",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taravancil/nippler.org.git"
+  },
+  "author": "Tara Vancil <tbvanc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taravancil/nippler.org/issues"
+  }
+}
