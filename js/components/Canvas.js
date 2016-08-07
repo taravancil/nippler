@@ -65,7 +65,7 @@ const Canvas = React.createClass({
     // TODO
   },
   clear() {
-    // TODO
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   },
   render() {
     if (!this.state.canvasSupported) { return <p>Update your browser.</p> }
