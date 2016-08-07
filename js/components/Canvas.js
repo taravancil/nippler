@@ -91,8 +91,12 @@ const Canvas = React.createClass({
     this.ctx.fillStyle = 'black'
     this.ctx.fill()
   },
-  drawNippleEmoji() {
-    // TODO
+  // Draws an emoji on the canvas
+  drawNippleEmoji(x, y, radius) {
+    // Adjust font size
+    // TODO this may need to be adjusted
+    this.ctx.font = `${radius*2.1}px Arial`
+    this.ctx.fillText(this.props.nippleStyle, x + radius, y + radius)
   },
   drawNippleImage() {
     // TODO
