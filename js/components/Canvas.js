@@ -83,8 +83,13 @@ const Canvas = React.createClass({
       drawFunc(nipple.x, nipple.y, this.props.nippleRadius)
     }
   },
-  drawNipplePlain() {
-    // TODO
+  // Draws a circle on the canvas
+  drawNipplePlain(x, y, radius) {
+    this.ctx.beginPath()
+    this.ctx.arc(x, y, radius, 0, Math.PI*2, false)
+    this.ctx.closePath()
+    this.ctx.fillStyle = 'black'
+    this.ctx.fill()
   },
   drawNippleEmoji() {
     // TODO
