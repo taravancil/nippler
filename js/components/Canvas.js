@@ -45,9 +45,9 @@ const Canvas = React.createClass({
     // Is this update going to redraw the background image?
     const isNewImage = this.props.image != nextProps.image
     // Is this update changing the nipple radius?
-    const newRadius = this.props.nippleRadius != nextProps.nippleRadius
+    const isNewRadius = this.props.nippleRadius != nextProps.nippleRadius
 
-    if (firstImage || newImage) {
+    if (isFirstImage || isNewImage) {
       // We need to draw the image
       const image = nextProps.image
 
@@ -63,7 +63,7 @@ const Canvas = React.createClass({
 
     // If it's the first time drawing the canvas or this update changes the
     // nipple radius, update state.maxX and state.maxY
-    if (newRadius || firstImage) {
+    if (isNewRadius || isFirstImage) {
       const radius = nextProps.nippleRadius
 
       const maxX = this.canvas.width - radius
