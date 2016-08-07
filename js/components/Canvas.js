@@ -44,6 +44,31 @@ const Canvas = React.createClass({
     const distY = y - el.y
     return (Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2))
   },
+  onMouseDown() {
+    // Set up layers
+    let topLayer = -1
+
+    const cursor = this.getCursorPosition()
+
+    // Is the cursor on a nipple?
+    for (let i = 0; i < this.nipples.length; i += 1) {
+      const nip = this.nipples[i]
+      let clicked = this.isClicked(nipple, cursor.x, cursor.y)
+
+      // The nipple is only clicked if it's not underneath a different nipple
+      if (clicked && i > topLayer)  {
+        topLayer = i
+        this.setState({
+          dragHoldX: cursor.x - nipple.x,
+          dragHoldY: cursor.y - nipple.y,
+          dragIndex: topLayer,
+          dragging: true
+        })
+        break
+      }
+    }
+    e.preventDefault()
+  },
   onDrag(e) {
     let posX, posY
     const cursor = this.getCursorPosition(e)
