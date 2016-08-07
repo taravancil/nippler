@@ -32,7 +32,9 @@ const Editor = React.createClass({
     return (
       <div>
         <div className='canvas-container'>
-          <Canvas />
+          <Canvas
+            nippleRadius={this.state.nippleRadius}
+            image={this.state.image} />
         </div>
         <button onClick={this.downloadCanvas} disabled={!this.state.imageSet}>
           Download photo
