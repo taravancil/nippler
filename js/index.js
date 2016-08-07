@@ -1,12 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = React.createClass({
-  render() {
-    return (
-      <div>Testing, testing...</div>
-    )
-  }
-})
+import Editor from './components/Editor'
 
-ReactDOM.render(<App />, document.getElementById('nippler-container'))
+ReactDOM.render(<Editor />, document.getElementById('nippler-container'))
