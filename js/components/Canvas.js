@@ -23,6 +23,42 @@ const Canvas = React.createClass({
       this.ctx = this.canvas.getContext('2d')
     }
   },
+  componentWillReceiveProps(nextProps) {
+    // Is this the first time a background has been set?
+    const isFirstImage = this.props.image == null
+    // Is this update going to redraw the background image?
+    const isNewImage = this.props.image != nextProps.image
+    // Is this update changing the nipple radius?
+    const newRadius = this.props.nippleRadius != nextProps.nippleRadius
+
+    if (firstImage || newImage) {
+      // We need to draw the image
+      const image = nextProps.image
+
+      // Scale the image and canvas if necessary
+      if (image.width > this.canvas.width) {
+        const scale = this.canvas.width / image.width
+        image.width = image.width * scale
+        image.height = image.height * scale
+      }
+      // The canvas must always have the same height as the image
+      this.canvas.height = image.height
+    }
+
+    // If it's the first time drawing the canvas or this update changes the
+    // nipple radius, update state.maxX and state.maxY
+    if (newRadius || firstImage) {
+      const radius = nextProps.nippleRadius
+
+      const maxX = this.canvas.width - radius
+      const maxY = this.canvas.height - radius
+
+      this.setState({
+        maxX: maxX,
+        maxY: maxY
+      })
+    }
+  },
   /* Whenever the component receives new props or the state is updated, the
    * canvas needs to be cleared and completely redrawn.
    */
