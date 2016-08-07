@@ -49,7 +49,7 @@ const Canvas = React.createClass({
 
     if (isFirstImage || isNewImage) {
       // We need to draw the image
-      const image = nextProps.image
+      let image = nextProps.image
 
       // Scale the image and canvas if necessary
       if (image.width > this.canvas.width) {
