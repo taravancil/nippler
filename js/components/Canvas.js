@@ -56,8 +56,7 @@ const Canvas = React.createClass({
     posX = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY)
 
     // TODO: Update the nipple's position on the canvas
-  }
-  // Clears the canvas
+  },
   drawBackground() {
     // TODO
   },
@@ -91,6 +90,7 @@ const Canvas = React.createClass({
   drawNippleImage() {
     // TODO
   },
+  // Clears the canvas
   clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   },
