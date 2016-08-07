@@ -1,4 +1,5 @@
 import Canvas from './Canvas'
+import ImageUploader from './ImageUploader'
 
 import React from 'react'
 
@@ -18,6 +19,7 @@ const Editor = React.createClass({
       <div>
         <div className='canvas-container'>
           <Canvas />
+          <ImageUploader />
         </div>
       </div>
     )
