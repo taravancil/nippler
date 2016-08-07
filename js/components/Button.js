@@ -1,7 +1,7 @@
 import React from 'react'
 
 baseStyles = {
-  border-radius: '2px',
+  borderRadius: '2px',
   outline: 'none',
   border: 'none',
   background: 'none',
