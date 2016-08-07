@@ -38,7 +38,12 @@ const Canvas = React.createClass({
       x: e.clientX - offset.left,
       y: e.clientY - offset.top
     }
-  }
+  },
+  isClicked(el, x, y) {
+    const distX = x - el.x
+    const distY = y - el.y
+    return (Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2))
+  },
   onDrag(e) {
     let posX, posY
     const cursor = this.getCursorPosition(e)
