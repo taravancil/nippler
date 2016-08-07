@@ -3,7 +3,7 @@ import React from 'react'
 const ImageUploader = React.createClass({
   onChange(e) {
     if (e.target.files[0]) {
-      this.readFile
+      this.readFile(e.target.files[0])
     }
   },
   readFile(file) {
