@@ -25,8 +25,8 @@ const Editor = React.createClass({
       <div>
         <div className='canvas-container'>
           <Canvas />
-          <ImageUploader imageHandler={this.imageHandler} />
         </div>
+        <ImageUploader imageHandler={this.imageHandler} />
       </div>
     )
   }
