@@ -62,6 +62,33 @@ const Canvas = React.createClass({
     // TODO
   },
   drawNipples() {
+    // nippleStyle can be the color 'black', an image, or an emoji character
+    const style = this.props.nippleStyle
+    let drawFunc
+
+    // Determine which drawing function to use
+    if (style === 'black') {
+      drawFunc = this.drawNipplePlain
+    }
+    else if (typeof style === 'string') {
+      drawFunc = this.drawNippleEmoji
+    }
+    else {
+      drawFunc = this.drawNippleImage
+    }
+
+    // Draw the nipples in this.nipples
+    for (let nipple of this.nipples) {
+      drawFunc(nipple.x, nipple.y, this.props.nippleRadius)
+    }
+  },
+  drawNipplePlain() {
+    // TODO
+  },
+  drawNippleEmoji() {
+    // TODO
+  },
+  drawNippleImage() {
     // TODO
   },
   clear() {
