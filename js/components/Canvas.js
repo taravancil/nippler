@@ -98,8 +98,10 @@ const Canvas = React.createClass({
     this.ctx.font = `${radius*2.1}px Arial`
     this.ctx.fillText(this.props.nippleStyle, x + radius, y + radius)
   },
-  drawNippleImage() {
-    // TODO
+  // Draws a nipple image on the canvas
+  drawNippleImage(x, y, radius) {
+    const d = radius * 2
+    this.ctx.drawImage(this.props.nippleStyle, x - radius, y - radius, d, d)
   },
   // Clears the canvas
   clear() {
