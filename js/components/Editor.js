@@ -13,13 +13,19 @@ const Editor = React.createClass({
       imageSet: false,
     }
   },
-
+  // Takes an Image `image` and updates the state
+  imageHandler(image) {
+    this.setState({
+      image: image,
+      imageSet: true
+    })
+  },
   render() {
     return (
       <div>
         <div className='canvas-container'>
           <Canvas />
-          <ImageUploader />
+          <ImageUploader imageHandler={this.imageHandler} />
         </div>
       </div>
     )
