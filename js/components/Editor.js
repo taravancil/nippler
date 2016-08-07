@@ -1,3 +1,5 @@
+import Canvas from './Canvas'
+
 import React from 'react'
 
 const Editor = React.createClass({
@@ -13,7 +15,11 @@ const Editor = React.createClass({
 
   render() {
     return (
-      <div>Editor</div>
+      <div>
+        <div className='canvas-container'>
+          <Canvas />
+        </div>
+      </div>
     )
   }
 })
