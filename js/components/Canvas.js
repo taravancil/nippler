@@ -152,6 +152,7 @@ const Canvas = React.createClass({
     return (
       <canvas
         id='nippler-canvas'
+        onMouseDown={this.onMouseDown}
         onMouseUp={this.stopDragging}
         onMouseLeave={this.stopDragging}
         onMouseMove={onMouseMove}>
