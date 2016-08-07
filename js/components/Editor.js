@@ -20,12 +20,23 @@ const Editor = React.createClass({
       imageSet: true
     })
   },
+  // Creates a download link to the canvas as a data URL and clicks it
+  downloadCanvas() {
+    const src = document.getElementById('nippler-canvas').toDataURL()
+    let a = document.createElement('a')
+    a.href = src
+    a.download = "nippler.jpg"
+    a.click()
+  },
   render() {
     return (
       <div>
         <div className='canvas-container'>
           <Canvas />
         </div>
+        <button onClick={this.downloadCanvas} disabled={!this.state.imageSet}>
+          Download photo
+        </button>
         <ImageUploader imageHandler={this.imageHandler} />
       </div>
     )
