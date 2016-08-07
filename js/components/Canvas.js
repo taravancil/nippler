@@ -10,6 +10,7 @@ const Canvas = React.createClass({
     return {
       canvasSupported: false,
       dragging: false,
+      dragIndex: -1
     }
   },
   componentWillMount() {
