@@ -16,6 +16,21 @@ const Canvas = React.createClass({
     // Create blank canvas to check if the browser supports <canvas>
     const canvas = document.createElement('canvas')
     this.setState({ canvasSupported: !!canvas.getContext('2d') })
+
+    // Construct this.nipples
+    this.nipples = []
+    let position = this.props.nippleRadius + 5
+
+    for (let i = 0; i < this.props.nippleNum; i += 1) {
+      this.nipples.push({
+        x: position,
+        y: this.props.nippleRadius + 5,
+        rad: this.props.nippleRadius,
+      })
+
+      // Place each nipple 10px apart
+      position += (this.props.nippleRadius * 2) + 10
+    }
   },
   componentDidMount() {
     if (this.state.canvasSupported) {
