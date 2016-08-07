@@ -23,6 +23,14 @@ const Canvas = React.createClass({
       this.ctx = this.canvas.getContext('2d')
     }
   },
+  /* Whenever the component receives new props or the state is updated, the
+   * canvas needs to be cleared and completely redrawn.
+   */
+  componentDidUpdate() {
+    this.clear()
+    this.drawBackground()
+    this.drawNipples()
+  },
   getCursorPosition(e) {
     const offset = e.target.offset()
 
@@ -49,6 +57,16 @@ const Canvas = React.createClass({
 
     // TODO: Update the nipple's position on the canvas
   }
+  // Clears the canvas
+  drawBackground() {
+    // TODO
+  },
+  drawNipples() {
+    // TODO
+  },
+  clear() {
+    // TODO
+  },
   render() {
     if (!this.state.canvasSupported) { return <p>Update your browser.</p> }
 
