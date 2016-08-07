@@ -57,8 +57,10 @@ const Canvas = React.createClass({
 
     // TODO: Update the nipple's position on the canvas
   },
+  // Draws this.props.image on the canvas
   drawBackground() {
-    // TODO
+    const image = this.props.image
+    this.ctx.drawImage(image, 0, 0, image.width, image.height)
   },
   drawNipples() {
     // nippleStyle can be the color 'black', an image, or an emoji character
