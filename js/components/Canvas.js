@@ -91,6 +91,9 @@ const Canvas = React.createClass({
     // Force an update since a re-render is never triggered during onDrag
     this.forceUpdate()
   },
+  stopDragging() {
+    this.setState({ dragging: false })
+  },
   // Draws this.props.image on the canvas
   drawBackground() {
     const image = this.props.image
@@ -149,6 +152,8 @@ const Canvas = React.createClass({
     return (
       <canvas
         id='nippler-canvas'
+        onMouseUp={this.stopDragging}
+        onMouseLeave={this.stopDragging}
         onMouseMove={onMouseMove}>
       </canvas>
     )
