@@ -85,7 +85,11 @@ const Canvas = React.createClass({
     posY = cursor.y - this.state.dragHoldY
     posX = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY)
 
-    // TODO: Update the nipple's position on the canvas
+    currentNipple.x = posX
+    currentNipple.y = posY
+    
+    // Force an update since a re-render is never triggered during onDrag
+    this.forceUpdate()
   },
   // Draws this.props.image on the canvas
   drawBackground() {
