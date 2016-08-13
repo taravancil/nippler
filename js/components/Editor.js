@@ -1,3 +1,4 @@
+import Button from './Button'
 import Canvas from './Canvas'
 import ImageUploader from './ImageUploader'
 
@@ -36,9 +37,9 @@ const Editor = React.createClass({
             nippleRadius={this.state.nippleRadius}
             image={this.state.image} />
         </div>
-        <button onClick={this.downloadCanvas} disabled={!this.state.imageSet}>
+        <Button handler={this.downloadCanvas} disabled={!this.state.imageSet}>
           Download photo
-        </button>
+        </Button>
         <ImageUploader imageHandler={this.imageHandler} />
       </div>
     )
