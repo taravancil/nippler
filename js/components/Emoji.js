@@ -20,7 +20,7 @@ const Emoji = React.createClass({
     const input = document.getElementsByName(name)[0]
 
     input.checked = true
-    this.setState({ char: input.value })i
+    this.setState({ char: input.value })
     this.props.handler(this.state.char)
 
     // Only show modifiers if character pressed > 200ms
