@@ -26,6 +26,7 @@
   flex-wrap: wrap;
   flex-flow: column wrap;
   overflow-x: auto;
+  overflow-y: hidden;
   height: 137px;
 }
 
