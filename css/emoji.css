@@ -35,7 +35,6 @@
   width: 32px;
   height: 32px;
   font-size: 22px;
-  cursor: pointer;
 }
 
 .emoji input, .emoji label {
@@ -49,6 +48,7 @@
 .emoji__char {
   border-radius: 3px;
   transition: background-color .1s ease;
+  cursor: pointer;
 }
 
 .emoji__char:hover, .emoji__char:focus {
