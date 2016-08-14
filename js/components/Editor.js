@@ -33,6 +33,9 @@ const Editor = React.createClass({
   updateNippleEmoji (char) {
     this.setState({ nippleStyle: char })
   },
+  updateNippleRadius (e) {
+    this.setState({ nippleRadius: e.target.value })
+  },
   render() {
     return (
       <div>
@@ -42,7 +45,9 @@ const Editor = React.createClass({
             nippleStyle={this.state.nippleStyle}
             image={this.state.image} />
         </div>
-        <Controls handleEmoji={this.updateNippleEmoji} />
+        <Controls
+          handleEmoji={this.updateNippleEmoji}
+          updateNippleRadius={this.updateNippleRadius} />
         <Button handler={this.downloadCanvas} disabled={!this.state.imageSet}>
           Download photo
         </Button>
