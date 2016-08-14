@@ -47,7 +47,7 @@ const Canvas = React.createClass({
   },
   componentWillReceiveProps(nextProps) {
     // Is this the first time a background has been set?
-    const isFirstImage = this.props.image == null
+    const isFirstImage = this.props.image === null && nextProps.image !== null
     // Is this update going to redraw the background image?
     const isNewImage = this.props.image != nextProps.image
     // Is this update changing the nipple radius?
