@@ -50,7 +50,8 @@ gulp.task('build-js', function() {
       bundler.bundle()
         .on('error', gutil.log.bind(gutil))
         .pipe(source('bundle.js'))
-        .pipe(gulp.dest('./build/js/'));
+        .pipe(gulp.dest('./build/js/'))
+        .pipe(reload({stream: true}));
     });
 });
 
