@@ -98,11 +98,11 @@ const Canvas = React.createClass({
     const distY = y - el.y
     return (Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2))
   },
-  onMouseDown() {
+  onMouseDown(e) {
     // Set up layers
     let topLayer = -1
 
-    const cursor = this.getCursorPosition()
+    const cursor = this.getCursorPosition(e)
 
     // Is the cursor on a nipple?
     for (let i = 0; i < this.nipples.length; i += 1) {
