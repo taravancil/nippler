@@ -30,15 +30,19 @@ const Editor = React.createClass({
     a.download = "nippler.jpg"
     a.click()
   },
+  updateNippleEmoji (char) {
+    this.setState({ nippleStyle: char })
+  },
   render() {
     return (
       <div>
         <div className='canvas-container'>
           <Canvas
             nippleRadius={this.state.nippleRadius}
+            nippleStyle={this.state.nippleStyle}
             image={this.state.image} />
         </div>
-        <Controls />
+        <Controls handleEmoji={this.updateNippleEmoji} />
         <Button handler={this.downloadCanvas} disabled={!this.state.imageSet}>
           Download photo
         </Button>
