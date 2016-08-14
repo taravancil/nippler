@@ -16,8 +16,12 @@ const Emoji = React.createClass({
     this.props.handler(this.state.char)
   },
   mouseDown(e) {
-    e.target.checked = true
-    this.setState({ char: e.target.value })
+    const name = `emoji-char-${e.target.innerText}`
+    const input = document.getElementsByName(name)[0]
+
+    input.checked = true
+    this.setState({ char: input.value })
+
     this.pressed = window.setTimeout(this.showModifiers, 200)
   },
   mouseUp(e) {
@@ -51,12 +55,12 @@ const Emoji = React.createClass({
         <div>
           <input
             id={'emoji-' + this.props.category}
-            name='emoji-char'
-            onMouseDown={this.mouseDown}
-            onMouseUp={this.mouseUp}
+            name={'emoji-char-' + this.state.char}
             type='radio'
             value={this.state.char} />
           <label
+            onMouseDown={this.mouseDown}
+            onMouseUp={this.mouseUp}
             htmlFor={'emoji-' + this.props.category}
             className='emoji__char'>
               {this.state.char}
