@@ -1,6 +1,6 @@
 import React from 'react'
 
-baseStyles = {
+const baseStyles = {
   borderRadius: '2px',
   outline: 'none',
   border: 'none',
