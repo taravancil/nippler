@@ -3,7 +3,9 @@ import React from 'react'
 const Canvas = React.createClass({
   getDefaultProps() {
     return {
-      image: null
+      image: null,
+      nippleNum: 2,
+      nippleStyle: 'black'
     }
   },
   getInitialState() {
