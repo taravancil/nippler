@@ -86,11 +86,14 @@ const Canvas = React.createClass({
     this.drawNipples()
   },
   getCursorPosition(e) {
-    const offset = e.target.offset()
+    const bounds = e.target.getBoundingClientRect()
+
+    const adjustedWidth = this.canvas.width / bounds.width
+    const adjustedHeight = this.canvas.height / bounds.height
 
     return {
-      x: e.clientX - offset.left,
-      y: e.clientY - offset.top
+      x: (e.clientX - bounds.left) * adjustedWidth,
+      y: (e.clientY - bounds.top) * adjustedHeight
     }
   },
   isClicked(el, x, y) {
