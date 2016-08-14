@@ -17,6 +17,7 @@ const EmojiModifiers = (props) =>
       {['🏻', '🏼', '🏽', '🏾', '🏿'].map((mod, j) =>
         <span
           key={j}
+          className='emoji__char'
           onMouseOver={props.selectModifier}
           onClick={props.hideModifiers}>
             {props.char + mod}
