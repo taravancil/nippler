@@ -22,6 +22,7 @@ const Emoji = React.createClass({
     input.checked = true
     this.setState({ char: input.value })
 
+    // Only show modifiers if character pressed > 200ms
     this.pressed = window.setTimeout(this.showModifiers, 200)
   },
   mouseUp(e) {
