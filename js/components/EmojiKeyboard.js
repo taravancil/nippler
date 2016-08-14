@@ -2,30 +2,6 @@ import Emoji from './Emoji.js'
 
 import React from 'react'
 
-const styles = {
-  base: {
-    width: '350'
-  },
-  categories: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    padding: '.4em .3em .1em .3em'
-  },
-  category: {
-    width: '25px',
-    fill: 'blue'
-  },
-  chars: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexFlow: 'column wrap',
-    overflowX: 'auto',
-    background: 'white',
-    height: '135',
-    padding: '.4em 0'
-  }
-}
-
 const EmojiKeyboard = React.createClass({
   getInitialState () {
     return {
@@ -54,13 +30,13 @@ const EmojiKeyboard = React.createClass({
   },
   render () {
     return (
-      <div style={styles.base}>
-        <div style={styles.categories}>
+      <div className='emoji-keyboard'>
+        <div className='emoji-categories'>
           {this.state.categories.map((category, i) =>
             <a
-              href={'#emoji-' + category.title}
               key={i}
-              style={styles.category}>
+              href={'#emoji-' + category.title}
+              className='emoji-category'>
                 <svg viewBox='0 0 24 24'>
                   <title>{category.title}</title>
                   <path d={category.icon}></path>
@@ -68,7 +44,7 @@ const EmojiKeyboard = React.createClass({
             </a>
           )}
         </div>
-        <div style={styles.chars}>
+        <div className='emoji-chars'>
           {this.state.chars.map((emoji, i) =>
             <Emoji
               key={i}
