@@ -10,7 +10,9 @@ const styles = {
 }
 
 const EmojiModifiers = (props) =>
-  <div style={props.visible ? styles.visible : styles.hidden}
+  <div
+    className='emoji__modifiers'
+    style={props.visible ? styles.visible : styles.hidden}
     onMouseLeave={props.hideModifiers}>
       {['🏻', '🏼', '🏽', '🏾', '🏿'].map((mod, j) =>
         <span
