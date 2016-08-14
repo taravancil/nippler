@@ -16,6 +16,9 @@ const Canvas = React.createClass({
       dragIndex: -1
     }
   },
+  shouldComponentUpdate () {
+    return this.props.image !== null
+  },
   componentWillMount() {
     // Create blank canvas to check if the browser supports <canvas>
     const canvas = document.createElement('canvas')
