@@ -141,7 +141,7 @@ const Canvas = React.createClass({
     posX = cursor.x - this.state.dragHoldX
     posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX)
     posY = cursor.y - this.state.dragHoldY
-    posX = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY)
+    posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY)
 
     // Update the dragged nipple's position on the canvas
     const currentNipple = this.nipples[this.state.dragIndex]
