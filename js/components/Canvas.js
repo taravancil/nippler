@@ -5,7 +5,8 @@ const Canvas = React.createClass({
     return {
       image: null,
       nippleNum: 2,
-      nippleStyle: 'black'
+      nippleStyle: 'black',
+      nippleRadius: 15
     }
   },
   getInitialState() {
