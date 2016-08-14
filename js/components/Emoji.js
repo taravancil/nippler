@@ -34,8 +34,17 @@ const Emoji = React.createClass({
     this.setState({ char: e.target.innerText })
   },
   render() {
-    let zIndex = this.state.pressed ? 2 : -2
-    let modifiers = this.props.options ? <EmojiModifiers char={this.props.char} hideModifiers={this.hideModifiers} zIndex={zIndex} selectModifier={this.selectModifier} /> : null
+    let modifiers = null
+
+    // The emoji has modifiers
+    if (this.props.options) {
+      modifiers =
+        <EmojiModifiers
+          char={this.props.char}
+          visible={this.state.pressed}
+          selectModifier={this.selectModifier}
+          hideModifiers={this.hideModifiers} />
+    }
 
     return (
       <div className='emoji'>
@@ -47,8 +56,10 @@ const Emoji = React.createClass({
             onMouseUp={this.mouseUp}
             type='radio'
             value={this.state.char} />
-          <label htmlFor={'emoji-' + this.props.category}>
-            {this.state.char}
+          <label
+            htmlFor={'emoji-' + this.props.category}
+            className='emoji__char'>
+              {this.state.char}
           </label>
         </div>
         {modifiers}
