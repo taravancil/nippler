@@ -109,7 +109,7 @@ const Canvas = React.createClass({
 
     // Is the cursor on a nipple?
     for (let i = 0; i < this.nipples.length; i += 1) {
-      const nip = this.nipples[i]
+      const nipple = this.nipples[i]
       let clicked = this.isClicked(nipple, cursor.x, cursor.y)
 
       // The nipple is only clicked if it's not underneath a different nipple
