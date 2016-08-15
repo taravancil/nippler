@@ -36,7 +36,7 @@ const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius, down
         disabled={disabled}
         onChange={updateNippleRadius} />
     </p>
-    <p style={styles.heading}>style</p>
+    <p style={styles.heading}>type</p>
     <Tabs
       tabs={['nipples', 'emoji']}
       content={[
