@@ -15,11 +15,10 @@ const styles = {
     display: 'block',
     width: '60px',
     fontWeight: 'bold',
-    background: '#fff',
+    background: 'rgba(255,255,255, .4)',
     color: 'blue',
+    padding: '.2em .5em',
     marginBottom: '20px',
-    border: '1px solid blue',
-    boxShadow: '3px 3px 0 blue',
     transform: 'rotate(-1deg)'
   }
 }
