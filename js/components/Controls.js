@@ -8,6 +8,7 @@ import Tabs from './Tabs'
 const styles = {
   base: {
     width: '100%',
+    maxWidth: '400px',
     padding: '0 1em'
   },
   heading: {
