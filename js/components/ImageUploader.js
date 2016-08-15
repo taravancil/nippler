@@ -1,3 +1,4 @@
+import Button from './Button'
 import React from 'react'
 
 const ImageUploader = React.createClass({
@@ -19,11 +20,17 @@ const ImageUploader = React.createClass({
   },
   render() {
     return (
-      <input
-        type='file'
-        id='edit-image'
-        accept='image/*'
-        onChange={this.onChange} />
+      <Button type='flat' alt={this.props.text}>
+        <label htmlFor='upload-image'>
+          <span>Edit a photo</span>
+          <input
+            style={{display: 'none'}}
+            type='file'
+            id='upload-image'
+            accept='image/*'
+            onChange={this.onChange} />
+        </label>
+      </Button>
     )
   }
 })
