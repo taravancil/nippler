@@ -5,9 +5,7 @@ const styles = {
     width: '100%',
     minWidth: '300px',
     maxWidth: '358px',
-    margin: 'auto',
-    background: '#f7f7f7',
-    boxShadow: '1px 1px 1px gray'
+    background: '#f7f7f7'
   },
   tabs: {
     width: '100%',
