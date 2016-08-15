@@ -1,0 +1,36 @@
+.gallery {
+  width: 100%;
+  max-width: 358px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column wrap;
+  justify-content: center
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #f7f7f7;
+  padding: .8em .4em;
+  height: 175px;
+}
+
+.gallery__nipple {
+  transition: border-color .1s ease;
+  border: 3px solid transparent;
+  display: block;
+  padding: .3em .3em 0 .3em;
+  margin: 0 .1em;
+}
+
+.gallery label {
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.gallery input {
+  display: none;
+}
+
+.gallery label:hover,
+.gallery input:checked + label,
+.gallery input:focus + label {
+  background: #dedede;
+}
