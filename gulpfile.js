@@ -61,7 +61,7 @@ gulp.task('server', function() {
   });
 });
 
-gulp.task('start', ['server']);
+gulp.task('start', ['build', 'server']);
 
 gulp.task('watch', ['build', 'server'], function() {
   gulp.watch('css/*', ['build-css']);
