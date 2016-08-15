@@ -19,7 +19,6 @@ const styles = {
     color: 'blue',
     padding: '.2em .5em',
     marginBottom: '20px',
-    transform: 'rotate(-1deg)'
   }
 }
 const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
