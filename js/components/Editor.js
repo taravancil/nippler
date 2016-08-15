@@ -1,5 +1,7 @@
 import Canvas from './Canvas'
 import Controls from './Controls'
+import Button from './Button'
+import ImageUploader from './ImageUploader'
 
 import React from 'react'
 
@@ -47,9 +49,19 @@ const Editor = React.createClass({
     this.setState({ nippleRadius: e.target.value })
   },
   render() {
+    let downloadBtn = null
+    console.log(this.state.imageSet)
+    if (this.state.imageSet) {
+      downloadBtn = <Button handler={this.downloadCanvas}
+        style={!this.state.imageSet ? '' : {display: 'none'}}>
+        Download &darr;
+      </Button>
+    }
     return (
       <div style={styles}>
-        <div className='canvas-container'>
+        <div className='canvas-container' style={{textAlign: 'right'}}>
+          {downloadBtn}
+          <ImageUploader imageHandler={this.imageHandler} />
           <Canvas
             nippleRadius={this.state.nippleRadius}
             nippleStyle={this.state.nippleStyle}

@@ -23,7 +23,7 @@ const styles = {
     transform: 'rotate(-1deg)'
   }
 }
-const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius, downloadCanvas, handleImage}) =>
+const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
   <div className='controls' style={styles.base}>
     <p className='controls__size'>
       <label htmlFor='nipple-size' style={styles.heading}>size</label>
@@ -42,10 +42,6 @@ const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius, down
       content={[
         <NippleGallery handler={handleNipple} />,
         <EmojiKeyboard handler={handleEmoji} />]} />
-    <Button handler={downloadCanvas} disabled={disabled}>
-      Download photo
-    </Button>
-    <ImageUploader imageHandler={handleImage} />
   </div>
 
 export default Controls
