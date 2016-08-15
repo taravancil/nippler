@@ -5,6 +5,13 @@ import Controls from './Controls'
 
 import React from 'react'
 
+const styles = {
+  display: 'flex',
+  width: '98%',
+  maxWidth: '1000px',
+  margin: 'auto',
+}
+
 const Editor = React.createClass({
   getInitialState() {
     return {
@@ -38,7 +45,7 @@ const Editor = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div style={styles}>
         <div className='canvas-container'>
           <Canvas
             nippleRadius={this.state.nippleRadius}
@@ -47,7 +54,9 @@ const Editor = React.createClass({
         </div>
         <Controls
           handleEmoji={this.updateNippleEmoji}
-          updateNippleRadius={this.updateNippleRadius} />
+          handleNipple={this.updateNippleRadius}
+          updateNippleRadius={this.updateNippleRadius}
+          disabled={!this.state.imageSet} />
         <Button handler={this.downloadCanvas} disabled={!this.state.imageSet}>
           Download photo
         </Button>
