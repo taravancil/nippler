@@ -1,14 +1,19 @@
 import React from 'react'
 
-const baseStyles = {
-  borderRadius: '2px',
-  outline: 'none',
-  border: 'none',
-  background: 'none',
-  height: '40px',
-  padding: '0 1em',
-  margin: '.5em',
-  fontSize: '.8em'
+const styles = {
+  base: {
+    outline: 'none',
+    color: 'blue',
+    border: '1px solid blue',
+    boxShadow: '3px 3px 0px blue',
+    background: '#fff',
+    height: '40px',
+    padding: '0 1em',
+    margin: '.5em',
+    fontSize: '.8em',
+    fontWeight: 'bold',
+    cursor: 'pointer'
+  }
 }
 
 const Button = (props) =>
@@ -16,7 +21,7 @@ const Button = (props) =>
     id={props.id}
     type='button'
     aria-label={props.alt}
-    style={baseStyles}
+    style={styles.base}
     className={'btn btn--' + props.type}
     onClick={props.handler}
     disabled={props.disabled}>
