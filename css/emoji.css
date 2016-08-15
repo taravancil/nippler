@@ -1,5 +1,6 @@
 .emoji-keyboard {
-  width: 358px;
+  width: 100%;
+  max-width: 358px;
 }
 
 .emoji-categories, .emoji-chars {
@@ -14,6 +15,7 @@
   padding-top: .5em;
   background: #e3e3e3;
   border-bottom: 1px solid #dadada;
+  height: 40px;
 }
 
 .emoji-category {
