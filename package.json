@@ -8,6 +8,7 @@
   "author": "Tara Vancil <tbvanc@gmail.com>",
   "scripts": {
     "build": "gulp build",
+    "start": "gulp start",
     "watch": "gulp watch"
   },
   "license": "MIT",

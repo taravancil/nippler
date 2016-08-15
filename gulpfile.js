@@ -61,6 +61,8 @@ gulp.task('server', function() {
   });
 });
 
+gulp.task('start', ['server']);
+
 gulp.task('watch', ['build', 'server'], function() {
   gulp.watch('css/*', ['build-css']);
   gulp.watch('html/*', ['minify-html', reload]);
