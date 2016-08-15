@@ -1,0 +1,69 @@
+.footer {
+  margin-top: 1em;
+  padding: 2em;
+  text-align: left;
+  color: black;
+}
+
+.footer a {
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: blue;
+}
+
+.footer .container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer__link {
+  margin-right: 25px;
+}
+
+.footer__credits {
+  font-size: .8em;
+}
+
+.footer__credits a {
+  text-decoration: underline;
+}
+
+.footer__icon {
+  font-size: 18px;
+}
+
+.footer__icon:hover {
+  cursor: pointer;
+}
+
+.footer__icon:hover:after {
+  content: 'Scandalous!';
+  margin-left: 7px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.footer__icon:hover .icon__redacted:after {
+  display: none;
+}
+
+.icon__redacted {
+  position: relative;
+}
+
+.icon__redacted:after {
+  position: absolute;
+  content: '';
+  background: black;
+  left: -1px;
+  top: 9px;
+  width: 15px;
+  height: 6px;
+}
