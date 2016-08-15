@@ -5,7 +5,6 @@ html, html * {
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 ol, ul {
