@@ -30,8 +30,6 @@ gulp.task('build-css', function() {
     .pipe(reload({stream: true}));
 })
 
-var external = ['react', 'react-dom'];
-
 gulp.task('build-js', function() {
   return rollup({
     entry: './js/index.js',
