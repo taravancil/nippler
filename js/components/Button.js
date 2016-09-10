@@ -22,7 +22,6 @@ const Button = (props) =>
     type='button'
     aria-label={props.alt}
     style={styles.base}
-    className={'btn btn--' + props.type}
     onClick={props.handler}
     disabled={props.disabled}>
       {props.children}
