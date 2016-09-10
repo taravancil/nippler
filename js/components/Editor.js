@@ -51,7 +51,6 @@ const Editor = React.createClass({
   },
   render() {
     let downloadBtn = null
-    console.log(this.state.imageSet)
     if (this.state.imageSet) {
       downloadBtn = <Button handler={this.downloadCanvas}
         style={!this.state.imageSet ? '' : {display: 'none'}}>
