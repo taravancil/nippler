@@ -7,6 +7,15 @@ const ImageUploader = React.createClass({
       this.readFile(e.target.files[0])
     }
   },
+  promptFileUpload () {
+    console.log()
+    let input = document.createElement('input')
+    input.type = 'file'
+    input.id = 'upload-image'
+    input.accept = 'image/*'
+    input.onchange = this.onChange
+    input.click()
+  },
   readFile(file) {
     const reader = new FileReader()
 
@@ -20,16 +29,11 @@ const ImageUploader = React.createClass({
   },
   render() {
     return (
-      <Button type='flat' alt={this.props.text}>
-        <label htmlFor='upload-image'>
-          <span>Edit a photo</span>
-          <input
-            style={{display: 'none'}}
-            type='file'
-            id='upload-image'
-            accept='image/*'
-            onChange={this.onChange} />
-        </label>
+      <Button
+        type='flat'
+        handler={this.promptFileUpload}
+        alt={this.props.text}>
+        Edit a photo
       </Button>
     )
   }
