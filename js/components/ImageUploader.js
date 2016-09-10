@@ -8,7 +8,6 @@ const ImageUploader = React.createClass({
     }
   },
   promptFileUpload () {
-    console.log()
     let input = document.createElement('input')
     input.type = 'file'
     input.id = 'upload-image'
@@ -23,7 +22,6 @@ const ImageUploader = React.createClass({
     reader.onload = () => {
       const img = new Image()
       img.src = reader.result
-      // Do something with the image
       this.props.imageHandler(img)
     }
   },
