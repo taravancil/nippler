@@ -7,6 +7,7 @@ const ImageUploader = React.createClass({
       this.readFile(e.target.files[0])
     }
   },
+  // Appends an <input type="file" accept="image/*"/> to the DOM and clicks it.
   promptFileUpload () {
     let input = document.createElement('input')
     input.type = 'file'
@@ -15,6 +16,7 @@ const ImageUploader = React.createClass({
     input.onchange = this.onChange
     input.click()
   },
+  // Reads the file and creates a new Image
   readFile(file) {
     const reader = new FileReader()
 
