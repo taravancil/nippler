@@ -2,7 +2,7 @@ import Button from './Button'
 import React from 'react'
 
 const ImageUploader = React.createClass({
-  onChange(e) {
+  onChange (e) {
     if (e.target.files[0]) {
       this.readFile(e.target.files[0])
     }
@@ -17,7 +17,7 @@ const ImageUploader = React.createClass({
     input.click()
   },
   // Reads the file and creates a new Image
-  readFile(file) {
+  readFile (file) {
     const reader = new FileReader()
 
     reader.readAsDataURL(file)
@@ -27,7 +27,7 @@ const ImageUploader = React.createClass({
       this.props.imageHandler(img)
     }
   },
-  render() {
+  render () {
     return (
       <Button
         type='flat'
