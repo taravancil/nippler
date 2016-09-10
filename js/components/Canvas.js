@@ -16,8 +16,8 @@ const Canvas = React.createClass({
       dragIndex: -1
     }
   },
-  shouldComponentUpdate () {
-    return this.props.image !== null
+  shouldComponentUpdate (nextProps) {
+    return this.props.image !== null || nextProps.image !== null
   },
   componentWillMount() {
     // Create blank canvas to check if the browser supports <canvas>
@@ -48,10 +48,12 @@ const Canvas = React.createClass({
   componentWillReceiveProps(nextProps) {
     // Is this the first time a background has been set?
     const isFirstImage = this.props.image === null && nextProps.image !== null
+
     // Is this update going to redraw the background image?
-    const isNewImage = this.props.image != nextProps.image
+    const isNewImage = this.props.image !== nextProps.image
+
     // Is this update changing the nipple radius?
-    const isNewRadius = this.props.nippleRadius != nextProps.nippleRadius
+    const isNewRadius = this.props.nippleRadius !== nextProps.nippleRadius
 
     if (isFirstImage || isNewImage) {
       // We need to draw the image
@@ -85,6 +87,7 @@ const Canvas = React.createClass({
    * canvas needs to be cleared and completely redrawn.
    */
   componentDidUpdate() {
+    console.log('componentDidUpdate')
     this.clear()
     this.drawBackground()
     this.drawNipples()
