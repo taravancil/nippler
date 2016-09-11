@@ -23,6 +23,12 @@ const styles = {
 }
 const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
   <div className='controls' style={styles.base}>
+    <p style={styles.heading}>type</p>
+    <Tabs
+      tabs={['nipples', 'emoji']}
+      content={[
+        <NippleGallery handler={handleNipple} />,
+        <EmojiKeyboard handler={handleEmoji} />]} />
     <p className='controls__size'>
       <label htmlFor='nipple-size' style={styles.heading}>size</label>
       <input
@@ -34,12 +40,6 @@ const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
         disabled={disabled}
         onChange={updateNippleRadius} />
     </p>
-    <p style={styles.heading}>type</p>
-    <Tabs
-      tabs={['nipples', 'emoji']}
-      content={[
-        <NippleGallery handler={handleNipple} />,
-        <EmojiKeyboard handler={handleEmoji} />]} />
   </div>
 
 export default Controls
