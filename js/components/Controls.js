@@ -35,7 +35,7 @@ const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
         name='nipple-size'
         type='range'
         min='5'
-        max='70'
+        max='50'
         defaultValue='15'
         disabled={disabled}
         onChange={updateNippleRadius} />
