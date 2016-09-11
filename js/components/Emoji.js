@@ -16,11 +16,10 @@ const Emoji = React.createClass({
     this.props.handler(this.state.char)
   },
   mouseDown(e) {
-    const name = `emoji-char-${e.target.innerText}`
-    const input = document.getElementsByName(name)[0]
+    const id = `emoji-char-${e.target.innerText}`
+    const el = document.getElementById(id)
 
-    input.checked = true
-    this.setState({ char: input.value })
+    this.setState({ char: el.innerText })
     this.props.handler(this.state.char)
 
     // Only show modifiers if character pressed > 200ms
@@ -51,22 +50,14 @@ const Emoji = React.createClass({
           selectModifier={this.selectModifier}
           hideModifiers={this.hideModifiers} />
     }
-
     return (
       <div className='emoji'>
-        <div>
-          <input
-            id={'emoji-' + this.props.category}
-            name={'emoji-char-' + this.state.char}
-            type='radio'
-            value={this.state.char} />
-          <label
-            onMouseDown={this.mouseDown}
-            onMouseUp={this.mouseUp}
-            htmlFor={'emoji-' + this.props.category}
-            className='emoji__char'>
-              {this.state.char}
-          </label>
+        <div
+          id={`emoji-char-${this.state.char}`}
+          className='emoji__char'
+          onMouseDown={this.mouseDown}
+          onMouseUp={this.mouseUp}>
+          {this.state.char}
         </div>
         {modifiers}
       </div>
