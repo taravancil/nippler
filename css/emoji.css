@@ -48,6 +48,7 @@
 }
 
 .emoji__char {
+  margin: 0 1px;
   border-radius: 3px;
   transition: background-color .1s ease;
   cursor: pointer;
@@ -57,19 +58,15 @@
   background: #dedede;
 }
 
-.emoji input {
-    z-index: -2;
-}
-
 .emoji__modifiers {
   position: absolute;
   display: flex;
   justify-content: space-around;
+  width: 167px;
   padding: .2em;
   border-radius: 3px;
-  right: -150px;
+  right: -162px;
   top: -4px;
-  width: 140px;
   box-shadow: 1px 2px 35px silver;
   background: #f7f7f7;
 }
@@ -84,4 +81,8 @@
   border-bottom: 7px solid transparent;
   border-top: 7px solid transparent;
   border-right: 7px solid #f7f7f7;
+}
+
+.emoji__modifier {
+  padding: 0 4px;
 }
