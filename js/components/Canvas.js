@@ -58,15 +58,26 @@ const Canvas = React.createClass({
     if (isFirstImage || isNewImage) {
       // We need to draw the image
       let image = nextProps.image
+      this.setState({ image: image })
 
-      // Scale the image and canvas if necessary
+      // downsize the image if necessary
       if (image.width > this.canvas.width) {
-        const scale = this.canvas.width / image.width
-        image.width = image.width * scale
-        image.height = image.height * scale
+        const targetWidth = image.width *
+              this.getScale(this.canvas.width, image.width)
+
+        // downsize by factor of 2 until the final step
+        while (this.getScale(targetWidth, image.width) <= 0.5) {
+          const newWidth = image.width * 0.5
+          const newHeight = image.height * 0.5
+          this.resize([this.canvas, image], newWidth, newHeight)
+        }
+
+        // downsize one last time
+        const finalScale = this.getScale(targetWidth, image.width)
+        const newWidth = image.width * finalScale
+        const newHeight = image.height * finalScale
+        this.resize([this.canvas, image], newWidth, newHeight)
       }
-      // The canvas must always have the same height as the image
-      this.canvas.height = image.height
     }
 
     // If it's the first time drawing the canvas or this update changes the
@@ -82,6 +93,15 @@ const Canvas = React.createClass({
         maxY: maxY
       })
     }
+  },
+  resize (targets, width, height) {
+    for (let target of targets) {
+      target.width = width
+      target.height = height
+    }
+  },
+  getScale (target, source) {
+    return target / source
   },
   /* Whenever the component receives new props or the state is updated, the
    * canvas needs to be cleared and completely redrawn.
@@ -163,7 +183,7 @@ const Canvas = React.createClass({
   },
   // Draws this.props.image on the canvas
   drawBackground() {
-    const image = this.props.image
+    const image = this.state.image
     this.ctx.drawImage(image, 0, 0, image.width, image.height)
   },
   drawNipples() {
