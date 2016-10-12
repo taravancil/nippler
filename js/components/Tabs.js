@@ -38,7 +38,6 @@ const styles = {
     borderBottom: '3px solid blue'
   },
   visible: {
-    // display: 'block'
     zIndex: '2'
   },
   hidden: {
