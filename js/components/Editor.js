@@ -70,7 +70,8 @@ const Editor = React.createClass({
           handleEmoji={this.updateNippleEmoji}
           handleNipple={this.updateNippleImage}
           updateNippleRadius={this.updateNippleRadius}
-          disabled={!this.state.imageSet} />
+          disabled={!this.state.imageSet}
+          nippleStyle={this.state.nippleStyle} />
       </div>
     )
   }
