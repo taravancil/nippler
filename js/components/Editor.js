@@ -11,28 +11,28 @@ const styles = {
 }
 
 const Editor = React.createClass({
-  getInitialState() {
+  getInitialState () {
     return {
       nippleRadius: 15,
       nippleStyle: 'black',
       nippleNum: 2,
       image: null,
-      imageSet: false,
+      imageSet: false
     }
   },
   // Takes an Image `image` and updates the state
-  imageHandler(image) {
+  imageHandler (image) {
     this.setState({
       image: image,
       imageSet: true
     })
   },
   // Creates a download link to the canvas as a data URL and clicks it
-  downloadCanvas() {
+  downloadCanvas () {
     const src = document.getElementById('nippler-canvas').toDataURL()
     let a = document.createElement('a')
     a.href = src
-    a.download = "nippler.jpg"
+    a.download = 'nippler.jpg'
     a.click()
   },
   updateNippleEmoji (char) {
@@ -46,7 +46,7 @@ const Editor = React.createClass({
   updateNippleRadius (e) {
     this.setState({ nippleRadius: e.target.value })
   },
-  render() {
+  render () {
     let downloadBtn = null
     if (this.state.imageSet) {
       downloadBtn = <Button handler={this.downloadCanvas}

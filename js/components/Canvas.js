@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Canvas = React.createClass({
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       image: null,
       nippleNum: 2,
@@ -9,7 +9,7 @@ const Canvas = React.createClass({
       nippleRadius: 15
     }
   },
-  getInitialState() {
+  getInitialState () {
     return {
       canvasSupported: false,
       dragging: false,
@@ -19,7 +19,7 @@ const Canvas = React.createClass({
   shouldComponentUpdate (nextProps) {
     return this.props.image !== null || nextProps.image !== null
   },
-  componentWillMount() {
+  componentWillMount () {
     // Create blank canvas to check if the browser supports <canvas>
     const canvas = document.createElement('canvas')
     this.setState({ canvasSupported: !!canvas.getContext('2d') })
@@ -32,20 +32,20 @@ const Canvas = React.createClass({
       this.nipples.push({
         x: position,
         y: this.props.nippleRadius + 5,
-        rad: this.props.nippleRadius,
+        rad: this.props.nippleRadius
       })
 
       // Place each nipple 10px apart
       position += (this.props.nippleRadius * 2) + 10
     }
   },
-  componentDidMount() {
+  componentDidMount () {
     if (this.state.canvasSupported) {
       this.canvas = document.getElementById('nippler-canvas')
       this.ctx = this.canvas.getContext('2d')
     }
   },
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     // Is this the first time a background has been set?
     const isFirstImage = this.props.image === null && nextProps.image !== null
 
@@ -106,13 +106,13 @@ const Canvas = React.createClass({
   /* Whenever the component receives new props or the state is updated, the
    * canvas needs to be cleared and completely redrawn.
    */
-  componentDidUpdate() {
+  componentDidUpdate () {
     console.log('componentDidUpdate')
     this.clear()
     this.drawBackground()
     this.drawNipples()
   },
-  getCursorPosition(e) {
+  getCursorPosition (e) {
     const bounds = e.target.getBoundingClientRect()
 
     const adjustedWidth = this.canvas.width / bounds.width
@@ -123,12 +123,12 @@ const Canvas = React.createClass({
       y: (e.clientY - bounds.top) * adjustedHeight
     }
   },
-  isClicked(el, x, y) {
+  isClicked (el, x, y) {
     const distX = x - el.x
     const distY = y - el.y
     return (Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2))
   },
-  onMouseDown(e) {
+  onMouseDown (e) {
     // Set up layers
     let topLayer = -1
 
@@ -140,7 +140,7 @@ const Canvas = React.createClass({
       let clicked = this.isClicked(nipple, cursor.x, cursor.y)
 
       // The nipple is only clicked if it's not underneath a different nipple
-      if (clicked && i > topLayer)  {
+      if (clicked && i > topLayer) {
         topLayer = i
         this.setState({
           dragHoldX: cursor.x - nipple.x,
@@ -153,7 +153,7 @@ const Canvas = React.createClass({
     }
     e.preventDefault()
   },
-  onDrag(e) {
+  onDrag (e) {
     let posX, posY
     const cursor = this.getCursorPosition(e)
 
@@ -174,19 +174,19 @@ const Canvas = React.createClass({
 
     currentNipple.x = posX
     currentNipple.y = posY
-    
+
     // Force an update since a re-render is never triggered during onDrag
     this.forceUpdate()
   },
-  stopDragging() {
+  stopDragging () {
     this.setState({ dragging: false })
   },
   // Draws this.props.image on the canvas
-  drawBackground() {
+  drawBackground () {
     const image = this.state.image
     this.ctx.drawImage(image, 0, 0, image.width, image.height)
   },
-  drawNipples() {
+  drawNipples () {
     // nippleStyle can be the color 'black', an image, or an emoji character
     const style = this.props.nippleStyle
     let drawFunc
@@ -194,11 +194,9 @@ const Canvas = React.createClass({
     // Determine which drawing function to use
     if (style === 'black') {
       drawFunc = this.drawNipplePlain
-    }
-    else if (typeof style === 'string') {
+    } else if (typeof style === 'string') {
       drawFunc = this.drawNippleEmoji
-    }
-    else {
+    } else {
       drawFunc = this.drawNippleImage
     }
 
@@ -208,29 +206,29 @@ const Canvas = React.createClass({
     }
   },
   // Draws a circle on the canvas
-  drawNipplePlain(x, y, radius) {
+  drawNipplePlain (x, y, radius) {
     this.ctx.beginPath()
-    this.ctx.arc(x, y, radius, 0, Math.PI*2, false)
+    this.ctx.arc(x, y, radius, 0, Math.PI * 2, false)
     this.ctx.closePath()
     this.ctx.fillStyle = 'black'
     this.ctx.fill()
   },
   // Draws an emoji on the canvas
-  drawNippleEmoji(x, y, radius) {
+  drawNippleEmoji (x, y, radius) {
     // Adjust font size
-    this.ctx.font = `${radius*2.1}px Arial`
+    this.ctx.font = `${radius * 2.1}px Arial`
     this.ctx.fillText(this.props.nippleStyle, x - radius, y + 15)
   },
   // Draws a nipple image on the canvas
-  drawNippleImage(x, y, radius) {
+  drawNippleImage (x, y, radius) {
     const d = radius * 2
     this.ctx.drawImage(this.props.nippleStyle, x - radius, y - radius, d, d)
   },
   // Clears the canvas
-  clear() {
+  clear () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   },
-  render() {
+  render () {
     if (!this.state.canvasSupported) {
       return <p>Sorry, your browser doesn't support Nippler :(</p>
     }
@@ -243,8 +241,7 @@ const Canvas = React.createClass({
         onMouseDown={this.onMouseDown}
         onMouseUp={this.stopDragging}
         onMouseLeave={this.stopDragging}
-        onMouseMove={onMouseMove}>
-      </canvas>
+        onMouseMove={onMouseMove} />
     )
   }
 })

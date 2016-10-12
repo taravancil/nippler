@@ -1,7 +1,5 @@
 import React from 'react'
-import Button from './Button'
 import EmojiKeyboard from './EmojiKeyboard'
-import ImageUploader from './ImageUploader'
 import NippleGallery from './NippleGallery'
 import Tabs from './Tabs'
 
@@ -19,7 +17,7 @@ const styles = {
     background: 'rgba(255,255,255, .4)',
     color: 'blue',
     padding: '.2em .5em',
-    marginBottom: '20px',
+    marginBottom: '20px'
   }
 }
 const Controls = ({

@@ -27,7 +27,7 @@ const NippleGallery = ({handler}) =>
           key={i}
           htmlFor={'nipple-' + i}
           className='gallery__nipple'>
-            <img src={nipple} width='50' height='50' />
+          <img src={nipple} width='50' height='50' />
         </label>
       </div>
     )}

@@ -24,7 +24,7 @@ const Button = (props) =>
     style={styles.base}
     onClick={props.handler}
     disabled={props.disabled}>
-      {props.children}
+    {props.children}
   </button>
 
 export default Button

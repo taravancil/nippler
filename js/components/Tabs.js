@@ -21,7 +21,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     background: '#f7f7f7',
-    borderBottom: '1px solid #dedede',
+    borderBottom: '1px solid #dedede'
   },
   tab: {
     cursor: 'pointer',
@@ -32,7 +32,7 @@ const styles = {
     borderBottom: '1px solid #dedede',
     marginBottom: '-1px',
     padding: '0 1em',
-    background: 'none',
+    background: 'none'
   },
   active: {
     borderBottom: '3px solid blue'
@@ -47,29 +47,31 @@ const styles = {
 }
 
 const Tabs = React.createClass({
-  getInitialState() {
+  getInitialState () {
     return {
-      activeIndex: 0,
+      activeIndex: 0
     }
   },
-  shouldComponentUpdate(_, nextState) {
-    return this.state.activeIndex != nextState.activeIndex
+  shouldComponentUpdate (_, nextState) {
+    return this.state.activeIndex !== nextState.activeIndex
   },
-  updateActive(e) {
+  updateActive (e) {
     this.setState({ activeIndex: e.target.dataset.index })
   },
-  render() {
+  render () {
     return (
       <div style={styles.base}>
         <div style={styles.tabs}>
           {this.props.tabs.map((tab, i) =>
             <button
               style={
-                Object.assign({}, styles.tab, i == this.state.activeIndex ? styles.active : {})}
+                Object.assign({}, styles.tab, i ===
+                              this.state.activeIndex ? styles.active :
+                              {})}
               onClick={this.updateActive}
               key={i}
               data-index={i}>
-                {tab}
+              {tab}
             </button>
           )}
         </div>
@@ -77,8 +79,7 @@ const Tabs = React.createClass({
           {this.props.content.map((node, j) =>
             <div
               className='tab__content'
-              style=
-                {j == this.state.activeIndex ? styles.visible : styles.hidden}
+              style={j === this.state.activeIndex ? styles.visible : styles.hidden}
               key={'tab-content-' + j}>
               {node}
             </div>
