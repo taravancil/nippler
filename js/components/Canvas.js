@@ -107,7 +107,6 @@ const Canvas = React.createClass({
    * canvas needs to be cleared and completely redrawn.
    */
   componentDidUpdate () {
-    console.log('componentDidUpdate')
     this.clear()
     this.drawBackground()
     this.drawNipples()
