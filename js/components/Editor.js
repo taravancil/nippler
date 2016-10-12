@@ -7,10 +7,7 @@ import React from 'react'
 
 const styles = {
   display: 'flex',
-  flexWrap: 'wrap',
-  width: '98%',
-  maxWidth: '1000px',
-  margin: 'auto',
+  flexWrap: 'wrap'
 }
 
 const Editor = React.createClass({
