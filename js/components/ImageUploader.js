@@ -4,7 +4,13 @@ import React from 'react'
 const ImageUploader = React.createClass({
   onChange (e) {
     if (e.target.files[0]) {
-      this.readFile(e.target.files[0])
+      const img = new Image()
+
+      img.onload = () => {
+        this.props.imageHandler(img)
+      }
+
+      img.src = window.URL.createObjectURL(e.target.files[0])
     }
   },
   // Appends an <input type="file" accept="image/*"/> to the DOM and clicks it.
@@ -15,17 +21,6 @@ const ImageUploader = React.createClass({
     input.accept = 'image/*'
     input.onchange = this.onChange
     input.click()
-  },
-  // Reads the file and creates a new Image
-  readFile (file) {
-    const reader = new FileReader()
-
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      const img = new Image()
-      img.src = reader.result
-      this.props.imageHandler(img)
-    }
   },
   render () {
     return (
