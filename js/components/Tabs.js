@@ -7,6 +7,14 @@ const styles = {
     maxWidth: '358px',
     background: '#f7f7f7'
   },
+  tabsContentContainer: {
+    position: 'relative',
+    height: '177px'
+  },
+  tabContent: {
+    position: 'absolute',
+    top: '0'
+  },
   tabs: {
     width: '100%',
     height: '40px',
@@ -30,10 +38,11 @@ const styles = {
     borderBottom: '3px solid blue'
   },
   visible: {
-    display: 'block'
+    // display: 'block'
+    zIndex: '2'
   },
   hidden: {
-    display: 'none'
+    zIndex: '-2'
   }
 }
 
@@ -64,9 +73,10 @@ const Tabs = React.createClass({
             </button>
           )}
         </div>
-        <div>
+        <div style={styles.tabsContentContainer}>
           {this.props.content.map((node, j) =>
             <div
+              className='tab__content'
               style=
                 {j == this.state.activeIndex ? styles.visible : styles.hidden}
               key={'tab-content-' + j}>
