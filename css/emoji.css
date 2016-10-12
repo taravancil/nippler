@@ -85,3 +85,14 @@
 .emoji__modifier {
   padding: 0 4px;
 }
+
+.tab__content {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.tab__content:after {
+  clear: both;
+}
