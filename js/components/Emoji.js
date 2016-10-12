@@ -54,7 +54,7 @@ const Emoji = React.createClass({
       <div className='emoji'>
         <div
           id={`emoji-char-${this.state.char}`}
-          className='emoji__char'
+          className={this.props.active ? 'emoji__char--active' : 'emoji__char'}
           onMouseDown={this.mouseDown}
           onMouseUp={this.mouseUp}>
           {this.state.char}
