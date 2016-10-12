@@ -8,7 +8,6 @@ var babel = require('rollup-plugin-babel');
 var rollup = require('rollup').rollup;
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var gutil = require('gulp-util');
 var intoStream = require('into-stream');
 
 gulp.task('minify-html', function() {
@@ -46,7 +45,7 @@ gulp.task('build-js', function() {
       var bundler = browserify(intoStream(result.code));
 
       bundler.bundle()
-        .on('error', gutil.log.bind(gutil))
+        .on('error', console.error.bind(console))
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./build/js/'))
         .pipe(reload({stream: true}));
