@@ -8,6 +8,7 @@
   "author": "Tara Vancil <tbvanc@gmail.com>",
   "scripts": {
     "build": "gulp build",
+    "prepublish": "export NODE_ENV=production; gulp build; uglifyjs build/js/bundle.js -c -m -o build/js/bundle.js",
     "start": "gulp start",
     "watch": "gulp watch"
   },
