@@ -231,7 +231,9 @@ const Canvas = React.createClass({
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   },
   render() {
-    if (!this.state.canvasSupported) { return <p>Update your browser.</p> }
+    if (!this.state.canvasSupported) {
+      return <p>Sorry, your browser doesn't support Nippler :(</p>
+    }
 
     let onMouseMove = this.state.dragging ? this.onDrag : null
 
