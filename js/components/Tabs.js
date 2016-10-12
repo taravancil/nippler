@@ -64,9 +64,8 @@ const Tabs = React.createClass({
           {this.props.tabs.map((tab, i) =>
             <button
               style={
-                Object.assign({}, styles.tab, i ===
-                              this.state.activeIndex ? styles.active :
-                              {})}
+                Object.assign({}, styles.tab, i ==
+                              this.state.activeIndex ? styles.active : {})}
               onClick={this.updateActive}
               key={i}
               data-index={i}>
@@ -78,7 +77,7 @@ const Tabs = React.createClass({
           {this.props.content.map((node, j) =>
             <div
               className='tab__content'
-              style={j === this.state.activeIndex ? styles.visible : styles.hidden}
+              style={j == this.state.activeIndex ? styles.visible : styles.hidden}
               key={'tab-content-' + j}>
               {node}
             </div>
