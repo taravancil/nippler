@@ -49,21 +49,3 @@
   font-size: 13px;
   font-style: italic;
 }
-
-.footer__icon:hover .icon__redacted:after {
-  display: none;
-}
-
-.icon__redacted {
-  position: relative;
-}
-
-.icon__redacted:after {
-  position: absolute;
-  content: '';
-  background: black;
-  left: -1px;
-  top: 9px;
-  width: 15px;
-  height: 6px;
-}
