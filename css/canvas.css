@@ -1,10 +1,10 @@
 canvas {
-  margin: 20px;
+  display: block;
+  margin: auto;
   width: 90%;
 }
 
 .canvas-container {
-  min-width: 350px;
   max-width: 600px;
   width: 100%;
   min-height: 250px;
@@ -13,4 +13,5 @@ canvas {
   linear-gradient(45deg, #e2e2e2 25%, transparent 25%, transparent 75%, #e2e2e2 75%, #e2e2e2);
   background-size:50px 50px;
   background-position:0 0, 25px 25px;
+  padding-bottom: 1.5em;
 }
