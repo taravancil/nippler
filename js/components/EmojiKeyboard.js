@@ -24,6 +24,9 @@ const EmojiKeyboard = React.createClass({
     this.req.open('GET', '/assets/emoji.json')
     this.req.send()
   },
+  setSelected (char) {
+    this.setState({selected: char})
+  },
   componentWillUnmount () {
     // Cancel pending XHR
     this.req.abort()
@@ -49,8 +52,9 @@ const EmojiKeyboard = React.createClass({
             <Emoji
               key={i}
               char={emoji.char}
-              options={emoji.options}
-              category={emoji.category}
+              options={emoji.mods}
+              category={emoji.cat}
+              selected={emoji.char === this.state.selected ? true : false}
               handler={this.props.handler} />
           )}
         </div>
