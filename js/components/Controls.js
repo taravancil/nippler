@@ -9,6 +9,7 @@ const styles = {
   base: {
     width: '100%',
     maxWidth: '400px',
+    margin: 'auto',
     padding: '0 1em'
   },
   heading: {
@@ -21,14 +22,19 @@ const styles = {
     marginBottom: '20px',
   }
 }
-const Controls = ({disabled, handleEmoji, handleNipple, updateNippleRadius}) =>
+const Controls = ({
+  disabled,
+  handleEmoji,
+  handleNipple,
+  updateNippleRadius,
+  nippleStyle }) =>
   <div className='controls' style={styles.base}>
     <p style={styles.heading}>type</p>
     <Tabs
       tabs={['nipples', 'emoji']}
       content={[
         <NippleGallery handler={handleNipple} />,
-        <EmojiKeyboard handler={handleEmoji} />]} />
+        <EmojiKeyboard handler={handleEmoji} active={nippleStyle} />]} />
     <p className='controls__size'>
       <label htmlFor='nipple-size' style={styles.heading}>size</label>
       <input
