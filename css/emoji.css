@@ -48,13 +48,12 @@
 }
 
 .emoji__char {
-  margin: 0 1px;
   border-radius: 3px;
   transition: background-color .1s ease;
   cursor: pointer;
 }
 
-.emoji__char:hover, .emoji__char:focus {
+.emoji__char:hover, .emoji__char:focus, .emoji__char--active {
   background: #dedede;
 }
 
