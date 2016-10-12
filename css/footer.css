@@ -32,7 +32,8 @@
 }
 
 .footer__credits a {
-  text-decoration: underline;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .footer__icon {
