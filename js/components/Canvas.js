@@ -77,6 +77,8 @@ const Canvas = React.createClass({
         const newWidth = image.width * finalScale
         const newHeight = image.height * finalScale
         this.resize([this.canvas, image], newWidth, newHeight)
+      } else {
+        this.resize([this.canvas], image.width, image.height)
       }
     }
 
@@ -95,7 +97,7 @@ const Canvas = React.createClass({
     }
   },
   resize (targets, width, height) {
-    for (let target of targets) {
+    for (const target of targets) {
       target.width = width
       target.height = height
     }
