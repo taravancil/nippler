@@ -1,0 +1,12 @@
+{
+  "short_name": "Nippler",
+  "name": "Nippler",
+  "icons": [
+    {
+      "src": "assets/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone"
+}
