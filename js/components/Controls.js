@@ -8,7 +8,6 @@ const styles = {
   base: {
     width: '100%',
     maxWidth: '400px',
-    margin: 'auto',
     padding: '0 1em'
   },
   heading: {
@@ -18,6 +17,7 @@ const styles = {
     background: 'rgba(255,255,255, .4)',
     color: 'blue',
     padding: '.2em .5em',
+    marginTop: '0',
     marginBottom: '20px'
   }
 }

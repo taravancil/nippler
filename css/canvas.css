@@ -14,4 +14,5 @@ canvas {
   background-size:50px 50px;
   background-position:0 0, 25px 25px;
   padding-bottom: 1.5em;
+  margin-bottom: 1em;
 }
