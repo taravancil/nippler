@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 
 const nipples = [
   '/assets/images/n1.png',

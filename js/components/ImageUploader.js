@@ -1,8 +1,13 @@
 import Button from './Button'
-import React from 'react'
 
-const ImageUploader = React.createClass({
-  onChange (e) {
+import { h, Component } from 'preact'
+
+class ImageUploader extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  onChange = (e) => {
     if (e.target.files[0]) {
       const img = new Image()
 
@@ -12,16 +17,18 @@ const ImageUploader = React.createClass({
 
       img.src = window.URL.createObjectURL(e.target.files[0])
     }
-  },
+  }
+
   // Appends an <input type="file" accept="image/*"/> to the DOM and clicks it.
-  promptFileUpload () {
+  promptFileUpload = () => {
     let input = document.createElement('input')
     input.type = 'file'
     input.id = 'upload-image'
     input.accept = 'image/*'
     input.onchange = this.onChange
     input.click()
-  },
+  }
+
   render () {
     return (
       <Button
@@ -32,6 +39,6 @@ const ImageUploader = React.createClass({
       </Button>
     )
   }
-})
+}
 
 export default ImageUploader

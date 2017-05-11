@@ -1,6 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { h, render } from 'preact'
 
 import Editor from './components/Editor'
 
-ReactDOM.render(<Editor />, document.getElementById('nippler-container'))
+render(<Editor />, document.getElementById('nippler-container'))

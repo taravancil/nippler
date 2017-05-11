@@ -1,15 +1,18 @@
 import Emoji from './Emoji.js'
 
-import React from 'react'
+import { h, Component } from 'preact'
 
-const EmojiKeyboard = React.createClass({
-  getInitialState () {
-    return {
+class EmojiKeyboard extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
       chars: [],
       categories: []
     }
-  },
-  componentDidMount () {
+  }
+
+  componentWillMount = () => {
     this.req = new XMLHttpRequest()
 
     this.req.onload = () => {
@@ -23,14 +26,17 @@ const EmojiKeyboard = React.createClass({
 
     this.req.open('GET', '/assets/emoji.json')
     this.req.send()
-  },
-  setSelected (char) {
+  }
+
+  setSelected = (char) => {
     this.setState({selected: char})
-  },
+  }
+
   componentWillUnmount () {
     // Cancel pending XHR
     this.req.abort()
-  },
+  }
+
   render () {
     return (
       <div className='emoji-keyboard'>
@@ -61,6 +67,6 @@ const EmojiKeyboard = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default EmojiKeyboard

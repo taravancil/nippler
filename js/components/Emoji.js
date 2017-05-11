@@ -1,22 +1,26 @@
 import EmojiModifiers from './EmojiModifiers.js'
 
-import React from 'react'
+import { h, Component } from 'preact'
+class Emoji extends Component {
+  constructor (props) {
+    super(props)
 
-const Emoji = React.createClass({
-  getInitialState () {
-    return {
+    this.state = {
       char: this.props.char,
       pressed: false
     }
-  },
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     return this.state.char !== nextState.char ||
       this.state.pressed !== nextState.pressed
-  },
+  }
+
   componentDidUpdate () {
     this.props.handler(this.state.char)
-  },
-  mouseDown (e) {
+  }
+
+  mouseDown = (e) => {
     const id = `emoji-char-${e.target.innerText}`
     const el = document.getElementById(id)
 
@@ -25,20 +29,25 @@ const Emoji = React.createClass({
 
     // Only show modifiers if character pressed > 200ms
     this.pressed = window.setTimeout(this.showModifiers, 200)
-  },
-  mouseUp (e) {
+  }
+
+  mouseUp = (e) => {
     window.clearTimeout(this.pressed)
     this.setState({ pressed: false })
-  },
-  showModifiers () {
+  }
+
+  showModifiers = () => {
     this.setState({ pressed: true })
-  },
-  hideModifiers () {
+  }
+
+  hideModifiers = () => {
     this.setState({ pressed: false })
-  },
-  selectModifier (e) {
+  }
+
+  selectModifier = (e) => {
     this.setState({ char: e.target.innerText })
-  },
+  }
+
   render () {
     let modifiers = null
 
@@ -64,6 +73,6 @@ const Emoji = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Emoji

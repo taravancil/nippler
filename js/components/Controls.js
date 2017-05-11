@@ -1,7 +1,8 @@
-import React from 'react'
 import EmojiKeyboard from './EmojiKeyboard'
 import NippleGallery from './NippleGallery'
 import Tabs from './Tabs'
+
+import { h } from 'preact'
 
 const styles = {
   base: {
@@ -20,6 +21,7 @@ const styles = {
     marginBottom: '20px'
   }
 }
+
 const Controls = ({
   disabled,
   handleEmoji,

@@ -1,4 +1,4 @@
-import React from 'react'
+import { h, Component } from 'preact'
 
 const styles = {
   base: {
@@ -45,18 +45,23 @@ const styles = {
   }
 }
 
-const Tabs = React.createClass({
-  getInitialState () {
-    return {
+class Tabs extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
       activeIndex: 0
     }
-  },
+  }
+
   shouldComponentUpdate (_, nextState) {
     return this.state.activeIndex !== nextState.activeIndex
-  },
-  updateActive (e) {
+  }
+
+  updateActive = (e) => {
     this.setState({ activeIndex: e.target.dataset.index })
-  },
+  }
+
   render () {
     return (
       <div style={styles.base}>
@@ -86,6 +91,6 @@ const Tabs = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Tabs
