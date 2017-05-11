@@ -33,12 +33,12 @@ class Canvas extends Component {
 
     this.nipples = [
       {
-        x: (this.props.nippleRadius * 2) + 10,
+        x: (this.props.nippleRadius * 2),
         y: this.props.nippleRadius + 5,
         rad: this.props.nippleRadius
       },
       {
-        x: (this.props.nippleRadius * 2) + 40,
+        x: (this.props.nippleRadius * 3),
         y: this.props.nippleRadius + 5,
         rad: this.props.nippleRadius
       }
