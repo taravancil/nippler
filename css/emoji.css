@@ -51,6 +51,11 @@
   border-radius: 3px;
   transition: background-color .1s ease;
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .emoji__char:hover, .emoji__char:focus, .emoji__char--active {
