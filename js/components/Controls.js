@@ -44,7 +44,7 @@ const Controls = ({
         max='50'
         defaultValue='15'
         disabled={disabled}
-        onChange={updateNippleRadius} />
+        onInput={updateNippleRadius} />
     </p>
   </div>
 
