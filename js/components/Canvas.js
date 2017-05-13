@@ -253,7 +253,7 @@ class Canvas extends Component {
 
   render () {
     if (!this.state.canvasSupported) {
-      return <p>Sorry, your browser doesn't support Nippler :(</p>
+      return <p>Sorry, your browser doesn’t support Nippler :(</p>
     }
 
     let onMouseMove = this.state.dragging ? this.onDrag : null
