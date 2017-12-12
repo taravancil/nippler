@@ -10,5 +10,3 @@ photo - that's quite fun too.
 
 `npm install` or `yarn install` then `npm start` to build the files
 and start up a local development server.
-
-Warning: Nippler is still pretty janky on Firefox. Try Chrome instead.

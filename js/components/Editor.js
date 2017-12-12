@@ -37,6 +37,7 @@ class Editor extends Component {
     let a = document.createElement('a')
     a.href = src
     a.download = 'nippler.jpg'
+    document.body.appendChild(a)
     a.click()
   }
 
