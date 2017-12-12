@@ -13,7 +13,7 @@ class Canvas extends Component {
   getDefaultProps () {
     return {
       image: null,
-      nippleStyle: 'black',
+      nippleStyle: 'blue',
       nippleRadius: 15,
     }
   }
@@ -205,12 +205,12 @@ class Canvas extends Component {
   }
 
   drawNipples = () => {
-    // nippleStyle can be the color 'black', an image, or an emoji character
+    // nippleStyle can be the color 'blue', an image, or an emoji character
     const style = this.props.nippleStyle
     let drawFunc
 
     // Determine which drawing function to use
-    if (style === 'black') {
+    if (style === 'blue') {
       drawFunc = this.drawNipplePlain
     } else if (typeof style === 'string') {
       drawFunc = this.drawNippleEmoji
@@ -229,7 +229,7 @@ class Canvas extends Component {
     this.ctx.beginPath()
     this.ctx.arc(x, y, radius, 0, Math.PI * 2, false)
     this.ctx.closePath()
-    this.ctx.fillStyle = 'black'
+    this.ctx.fillStyle = 'blue'
     this.ctx.fill()
   }
 

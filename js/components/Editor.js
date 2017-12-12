@@ -16,7 +16,7 @@ class Editor extends Component {
 
     this.state = {
       nippleRadius: 15,
-      nippleStyle: 'black',
+      nippleStyle: 'blue',
       nippleNum: 2,
       image: null,
       imageSet: false
