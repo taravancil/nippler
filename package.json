@@ -8,9 +8,8 @@
   "author": "Tara Vancil <tbvanc@gmail.com>",
   "scripts": {
     "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css",
-    "predeploy": "export NODE_ENV=production; gulp build; uglifyjs build/js/bundle.js -c -m -o build/js/bundle.js;",
-    "watch": "webpack -w --mode development; less-watch-compiler",
-    "start": "webpack-dev-server --open --mode development; less-watch-compiler"
+    "watch": "webpack -w --mode development && less-watch-compiler",
+    "start": "less-watch-compiler & webpack-dev-server --open --mode development"
   },
   "license": "MIT",
   "bugs": {
