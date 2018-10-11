@@ -1,15 +1,14 @@
 {
-  "name": "nippler.org",
+  "name": "nippler",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taravancil/nippler.org.git"
+    "url": "git+https://github.com/taravancil/nippler.git"
   },
-  "author": "Tara Vancil <tbvanc@gmail.com>",
+  "author": "Tara Vancil <contact@taravancil.com>",
   "scripts": {
-    "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css",
-    "watch": "webpack -w --mode development && less-watch-compiler",
-    "start": "less-watch-compiler & webpack-dev-server --open --mode development"
+    "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css; cp src/html/*.html dist/",
+    "start": "cp src/html/*.html dist/; less-watch-compiler & webpack -w --mode development & browser-sync start --server dist --watch"
   },
   "license": "MIT",
   "bugs": {
@@ -20,12 +19,12 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.0",
     "less": "^3.8.1",
     "less-plugin-clean-css": "^1.5.1",
     "less-watch-compiler": "^1.11.3",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "react": "^16.5.2",
