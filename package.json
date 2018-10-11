@@ -7,32 +7,29 @@
   },
   "author": "Tara Vancil <tbvanc@gmail.com>",
   "scripts": {
-    "build": "gulp build",
+    "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css",
     "predeploy": "export NODE_ENV=production; gulp build; uglifyjs build/js/bundle.js -c -m -o build/js/bundle.js;",
-    "start": "gulp start",
-    "watch": "gulp watch"
+    "watch": "webpack -w --mode development; less-watch-compiler",
+    "start": "webpack-dev-server --open --mode development; less-watch-compiler"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/taravancil/nippler.org/issues"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-runtime": "^6.23.0",
-    "browser-sync": "^2.13.0",
-    "browserify": "^13.1.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.12",
-    "gulp-concat": "^2.6.0",
-    "gulp-htmlmin": "^2.0.0",
-    "into-stream": "^2.0.1",
-    "rollup": "^0.34.13",
-    "rollup-plugin-babel": "^2.7.1",
-    "vinyl-source-stream": "^1.1.0"
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "less": "^3.8.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "less-watch-compiler": "^1.11.3",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
-    "preact": "^8.1.0"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   }
 }

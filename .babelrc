@@ -1,9 +1,3 @@
 {
-  "presets": [
-    ["es2015", { "modules": false }]
-  ],
-  "plugins": [
-    ["transform-react-jsx", { "pragma": "h" }],
-    ["transform-class-properties", { "spec": true }]
-  ]
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
