@@ -4,24 +4,6 @@ import Tabs from "./Tabs";
 
 import React from "react";
 
-const styles = {
-  base: {
-    width: "100%",
-    maxWidth: "400px",
-    padding: "0 1em"
-  },
-  heading: {
-    display: "block",
-    width: "60px",
-    fontWeight: "bold",
-    background: "rgba(255,255,255, .4)",
-    color: "blue",
-    padding: ".2em .5em",
-    marginTop: "0",
-    marginBottom: "20px"
-  }
-};
-
 const Controls = ({
   disabled,
   handleEmoji,
@@ -29,8 +11,8 @@ const Controls = ({
   updateNippleRadius,
   nippleStyle
 }) => (
-  <div className="controls" style={styles.base}>
-    <p style={styles.heading}>type</p>
+  <div className="controls">
+    <p>type</p>
     <Tabs
       tabs={["nipples", "emoji"]}
       content={[
@@ -39,9 +21,7 @@ const Controls = ({
       ]}
     />
     <p className="controls__size">
-      <label htmlFor="nipple-size" style={styles.heading}>
-        size
-      </label>
+      <label htmlFor="nipple-size">size</label>
       <input
         name="nipple-size"
         type="range"

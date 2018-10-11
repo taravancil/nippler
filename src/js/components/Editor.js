@@ -5,11 +5,6 @@ import Controls from "./Controls";
 import Button from "./Button";
 import ImageUploader from "./ImageUploader";
 
-const styles = {
-  display: "flex",
-  flexWrap: "wrap"
-};
-
 class Editor extends React.Component {
   constructor(props) {
     super(props);
@@ -68,8 +63,8 @@ class Editor extends React.Component {
       );
     }
     return (
-      <div style={styles}>
-        <div className="canvas-container" style={{ textAlign: "right" }}>
+      <div>
+        <div className="canvas-container">
           {downloadBtn}
           <ImageUploader imageHandler={this.imageHandler} />
           <Canvas
