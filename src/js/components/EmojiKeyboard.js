@@ -1,7 +1,7 @@
 import React from "react";
 import Emoji from "./Emoji.js";
 
-class EmojiKeyboard extends Component {
+class EmojiKeyboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,7 +11,7 @@ class EmojiKeyboard extends Component {
     };
   }
 
-  componentWillMount = () => {
+  componentWillMount() {
     this.req = new XMLHttpRequest();
 
     this.req.onload = () => {
@@ -25,11 +25,11 @@ class EmojiKeyboard extends Component {
 
     this.req.open("GET", "/assets/emoji.json");
     this.req.send();
-  };
+  }
 
-  setSelected = char => {
+  setSelected(char) {
     this.setState({ selected: char });
-  };
+  }
 
   componentWillUnmount() {
     // Cancel pending XHR

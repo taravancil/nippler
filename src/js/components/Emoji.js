@@ -22,7 +22,7 @@ class Emoji extends React.Component {
     this.props.handler(this.state.char);
   }
 
-  mouseDown = e => {
+  mouseDown(e) {
     const id = `emoji-char-${e.target.innerText}`;
     const el = document.getElementById(id);
 
@@ -31,24 +31,24 @@ class Emoji extends React.Component {
 
     // Only show modifiers if character pressed > 200ms
     this.pressed = window.setTimeout(this.showModifiers, 200);
-  };
+  }
 
-  mouseUp = e => {
+  mouseUp(e) {
     window.clearTimeout(this.pressed);
     this.setState({ pressed: false });
-  };
+  }
 
-  showModifiers = () => {
+  showModifiers() {
     this.setState({ pressed: true });
-  };
+  }
 
-  hideModifiers = () => {
+  hideModifiers() {
     this.setState({ pressed: false });
-  };
+  }
 
-  selectModifier = e => {
+  selectModifier(e) {
     this.setState({ char: e.target.innerText });
-  };
+  }
 
   render() {
     let modifiers = null;

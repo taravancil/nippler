@@ -1,3 +1,5 @@
+import React from "react";
+
 const styles = {
   base: {
     width: "100%",
@@ -43,7 +45,7 @@ const styles = {
   }
 };
 
-class Tabs extends Component {
+class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,9 +58,9 @@ class Tabs extends Component {
     return this.state.activeIndex !== nextState.activeIndex;
   }
 
-  updateActive = e => {
+  updateActive(e) {
     this.setState({ activeIndex: e.target.dataset.index });
-  };
+  }
 
   render() {
     return (

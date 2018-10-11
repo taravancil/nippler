@@ -11,19 +11,11 @@ class Canvas extends React.Component {
     };
   }
 
-  getDefaultProps() {
-    return {
-      image: null,
-      nippleStyle: "blue",
-      nippleRadius: 15
-    };
-  }
-
   shouldComponentUpdate(nextProps) {
     return this.props.image !== null || nextProps.image !== null;
   }
 
-  componentWillMount = () => {
+  componentWillMount() {
     // Create blank canvas to check if the browser supports <canvas>
     const canvas = document.createElement("canvas");
     this.setState({ canvasSupported: !!canvas.getContext("2d") });
@@ -44,16 +36,16 @@ class Canvas extends React.Component {
         rad: this.props.nippleRadius
       }
     ];
-  };
+  }
 
-  componentDidMount = () => {
+  componentDidMount() {
     if (this.state.canvasSupported) {
       this.canvas = document.getElementById("nippler-canvas");
       this.ctx = this.canvas.getContext("2d");
     }
-  };
+  }
 
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps(nextProps) {
     // Is this the first time a background has been set?
     const isFirstImage = this.props.image === null && nextProps.image !== null;
 
@@ -103,7 +95,7 @@ class Canvas extends React.Component {
         maxY: maxY
       });
     }
-  };
+  }
 
   resize(targets, width, height) {
     for (const target of targets) {
@@ -125,7 +117,7 @@ class Canvas extends React.Component {
     this.drawNipples();
   }
 
-  getCursorPosition = e => {
+  getCursorPosition(e) {
     const bounds = e.target.getBoundingClientRect();
 
     const adjustedWidth = this.canvas.width / bounds.width;
@@ -135,7 +127,7 @@ class Canvas extends React.Component {
       x: (e.clientX - bounds.left) * adjustedWidth,
       y: (e.clientY - bounds.top) * adjustedHeight
     };
-  };
+  }
 
   isClicked(el, x, y) {
     const distX = x - el.x;
@@ -143,7 +135,7 @@ class Canvas extends React.Component {
     return Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2);
   }
 
-  onMouseDown = e => {
+  onMouseDown(e) {
     // Set up layers
     let topLayer = -1;
 
@@ -167,9 +159,9 @@ class Canvas extends React.Component {
       }
     }
     e.preventDefault();
-  };
+  }
 
-  onDrag = e => {
+  onDrag(e) {
     let posX, posY;
     const cursor = this.getCursorPosition(e);
 
@@ -193,11 +185,11 @@ class Canvas extends React.Component {
 
     // Force an update since a re-render is never triggered during onDrag
     this.forceUpdate();
-  };
+  }
 
-  stopDragging = () => {
+  stopDragging() {
     this.setState({ dragging: false });
-  };
+  }
 
   // Draws this.props.image on the canvas
   drawBackground() {
@@ -205,7 +197,7 @@ class Canvas extends React.Component {
     this.ctx.drawImage(image, 0, 0, image.width, image.height);
   }
 
-  drawNipples = () => {
+  drawNipples() {
     // nippleStyle can be the color 'blue', an image, or an emoji character
     const style = this.props.nippleStyle;
     let drawFunc;
@@ -223,34 +215,34 @@ class Canvas extends React.Component {
     for (let nipple of this.nipples) {
       drawFunc(nipple.x, nipple.y, this.props.nippleRadius);
     }
-  };
+  }
 
   // Draws a circle on the canvas
-  drawNipplePlain = (x, y, radius) => {
+  drawNipplePlain(x, y, radius) {
     this.ctx.beginPath();
     this.ctx.arc(x, y, radius, 0, Math.PI * 2, false);
     this.ctx.closePath();
     this.ctx.fillStyle = "blue";
     this.ctx.fill();
-  };
+  }
 
   // Draws an emoji on the canvas
-  drawNippleEmoji = (x, y, radius) => {
+  drawNippleEmoji(x, y, radius) {
     // Adjust font size
     this.ctx.font = `${radius * 2.1}px Arial`;
     this.ctx.fillText(this.props.nippleStyle, x - radius, y + 15);
-  };
+  }
 
   // Draws a nipple image on the canvas
-  drawNippleImage = (x, y, radius) => {
+  drawNippleImage(x, y, radius) {
     const d = radius * 2;
     this.ctx.drawImage(this.props.nippleStyle, x - radius, y - radius, d, d);
-  };
+  }
 
   // Clears the canvas
-  clear = () => {
+  clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  };
+  }
 
   render() {
     if (!this.state.canvasSupported) {
@@ -270,5 +262,11 @@ class Canvas extends React.Component {
     );
   }
 }
+
+Canvas.defaultProps = {
+  image: null,
+  nippleStyle: "blue",
+  nippleRadius: 15
+};
 
 export default Canvas;

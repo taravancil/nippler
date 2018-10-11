@@ -24,12 +24,12 @@ class Editor extends React.Component {
   }
 
   // Takes an Image `image` and updates the state
-  imageHandler = image => {
+  imageHandler(image) {
     this.setState({
       image: image,
       imageSet: true
     });
-  };
+  }
 
   // Creates a download link to the canvas as a data URL and clicks it
   downloadCanvas() {
@@ -41,19 +41,19 @@ class Editor extends React.Component {
     a.click();
   }
 
-  updateNippleEmoji = char => {
+  updateNippleEmoji(char) {
     this.setState({ nippleStyle: char });
-  };
+  }
 
-  updateNippleImage = e => {
+  updateNippleImage(e) {
     let image = new Image();
     image.src = e.target.value;
     this.setState({ nippleStyle: image });
-  };
+  }
 
-  updateNippleRadius = e => {
+  updateNippleRadius(e) {
     this.setState({ nippleRadius: e.target.value });
-  };
+  }
 
   render() {
     let downloadBtn = null;
