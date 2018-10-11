@@ -7,8 +7,8 @@
   },
   "author": "Tara Vancil <contact@taravancil.com>",
   "scripts": {
-    "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css; cp src/html/*.html dist/",
-    "start": "cp src/html/*.html dist/; less-watch-compiler & webpack -w --mode development & browser-sync start --server dist --watch"
+    "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css",
+    "start": "less-watch-compiler & webpack -w --mode development & browser-sync start --server dist --watchi"
   },
   "license": "MIT",
   "bugs": {
