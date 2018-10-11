@@ -3,7 +3,8 @@
   max-width: 358px;
 }
 
-.emoji-categories, .emoji-chars {
+.emoji-categories,
+.emoji-chars {
   display: flex;
   justify-content: space-between;
   background: #f7f7f7;
@@ -12,7 +13,7 @@
 .emoji-categories {
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: .5em;
+  padding-top: 0.5em;
   background: #e3e3e3;
   border-bottom: 1px solid #dadada;
   height: 40px;
@@ -39,7 +40,8 @@
   font-size: 22px;
 }
 
-.emoji input, .emoji label {
+.emoji input,
+.emoji label {
   position: absolute;
   top: 0;
   left: 0;
@@ -49,7 +51,7 @@
 
 .emoji__char {
   border-radius: 3px;
-  transition: background-color .1s ease;
+  transition: background-color 0.1s ease;
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -58,7 +60,9 @@
   user-select: none;
 }
 
-.emoji__char:hover, .emoji__char:focus, .emoji__char--active {
+.emoji__char:hover,
+.emoji__char:focus,
+.emoji__char--active {
   background: #dedede;
 }
 
@@ -67,7 +71,7 @@
   display: flex;
   justify-content: space-around;
   width: 167px;
-  padding: .2em;
+  padding: 0.2em;
   border-radius: 3px;
   right: -162px;
   top: -4px;
@@ -76,7 +80,7 @@
 }
 
 .emoji__modifiers:before {
-  content: '';
+  content: "";
   position: absolute;
   left: -7px;
   top: 13px;
