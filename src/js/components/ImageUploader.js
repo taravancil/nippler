@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button";
 
 class ImageUploader extends React.Component {
   constructor(props) {
@@ -16,23 +15,14 @@ class ImageUploader extends React.Component {
 
       img.src = window.URL.createObjectURL(e.target.files[0]);
     }
-  }
-
-  // Appends an <input type="file" accept="image/*"/> to the DOM and clicks it.
-  promptFileUpload() {
-    let input = document.createElement("input");
-    input.type = "file";
-    input.id = "upload-image";
-    input.accept = "image/*";
-    input.onchange = this.onChange;
-    input.click();
-  }
+  };
 
   render() {
     return (
-      <Button type="flat" handler={this.promptFileUpload} alt={this.props.text}>
-        Edit a photo
-      </Button>
+      <label className="btn image-uploader">
+        Select photo
+        <input type="file" accept="image/*" onChange={this.onChange} />
+      </label>
     );
   }
 }
