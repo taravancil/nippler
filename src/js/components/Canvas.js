@@ -46,6 +46,14 @@ class Canvas extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const canvasContainer = document.querySelector(".canvas-container");
+
+    this.resize(
+      [this.canvas],
+      canvasContainer.clientWidth,
+      canvasContainer.clientHeight
+    );
+
     // Is this the first time a background has been set?
     const isFirstImage = this.props.image === null && nextProps.image !== null;
 
@@ -60,26 +68,19 @@ class Canvas extends React.Component {
       let image = nextProps.image;
       this.setState({ image: image });
 
+      if (image.height > this.canvas.height) {
+        const scaleY = this.getScale(this.canvas.height, image.height);
+        this.resize([image], image.width * scaleY, image.height * scaleY);
+      }
+
       // downsize the image if necessary
       if (image.width > this.canvas.width) {
-        const targetWidth =
-          image.width * this.getScale(this.canvas.width, image.width);
-
-        // downsize by factor of 2 until the final step
-        while (this.getScale(targetWidth, image.width) <= 0.5) {
-          const newWidth = image.width * 0.5;
-          const newHeight = image.height * 0.5;
-          this.resize([this.canvas, image], newWidth, newHeight);
-        }
-
-        // downsize one last time
-        const finalScale = this.getScale(targetWidth, image.width);
-        const newWidth = image.width * finalScale;
-        const newHeight = image.height * finalScale;
-        this.resize([this.canvas, image], newWidth, newHeight);
-      } else {
-        this.resize([this.canvas], image.width, image.height);
+        const scaleX = this.getScale(this.canvas.width, image.width);
+        this.resize([image], image.width * scaleX, image.height * scaleX);
       }
+      this.resize([this.canvas], image.width, image.height);
+
+      this.ctx = this.canvas.getContext("2d");
     }
 
     // If it's the first time drawing the canvas or this update changes the
