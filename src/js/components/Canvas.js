@@ -118,7 +118,7 @@ class Canvas extends React.Component {
     this.drawNipples();
   }
 
-  getCursorPosition(e) {
+  getCursorPosition = e => {
     const bounds = e.target.getBoundingClientRect();
 
     const adjustedWidth = this.canvas.width / bounds.width;
@@ -128,15 +128,15 @@ class Canvas extends React.Component {
       x: (e.clientX - bounds.left) * adjustedWidth,
       y: (e.clientY - bounds.top) * adjustedHeight
     };
-  }
+  };
 
-  isClicked(el, x, y) {
+  isClicked = (el, x, y) => {
     const distX = x - el.x;
     const distY = y - el.y;
     return Math.pow(distX, 2) + Math.pow(distY, 2) < Math.pow(el.rad, 2);
-  }
+  };
 
-  onMouseDown(e) {
+  onMouseDown = e => {
     // Set up layers
     let topLayer = -1;
 
@@ -160,9 +160,9 @@ class Canvas extends React.Component {
       }
     }
     e.preventDefault();
-  }
+  };
 
-  onDrag(e) {
+  onDrag = e => {
     let posX, posY;
     const cursor = this.getCursorPosition(e);
 
@@ -188,15 +188,15 @@ class Canvas extends React.Component {
     this.forceUpdate();
   };
 
-  stopDragging() {
+  stopDragging = () => {
     this.setState({ dragging: false });
-  }
+  };
 
   // Draws this.props.image on the canvas
-  drawBackground() {
+  drawBackground = () => {
     const image = this.state.image;
     this.ctx.drawImage(image, 0, 0, image.width, image.height);
-  }
+  };
 
   drawNipples = () => {
     // nippleStyle can be the color 'peachpuff' or an image
@@ -212,12 +212,13 @@ class Canvas extends React.Component {
 
     // Draw the nipples in this.nipples
     for (let nipple of this.nipples) {
+      console.log("(", nipple.x, ",", nipple.y, ")");
       drawFunc(nipple.x, nipple.y, this.props.nippleRadius);
     }
-  }
+  };
 
   // Draws a circle on the canvas
-  drawNipplePlain(x, y, radius) {
+  drawNipplePlain = (x, y, radius) => {
     this.ctx.beginPath();
     this.ctx.arc(x, y, radius, 0, Math.PI * 2, false);
     this.ctx.closePath();
@@ -238,9 +239,9 @@ class Canvas extends React.Component {
   };
 
   // Clears the canvas
-  clear() {
+  clear = () => {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  }
+  };
 
   render() {
     if (!this.state.canvasSupported) {

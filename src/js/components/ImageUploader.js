@@ -5,7 +5,7 @@ class ImageUploader extends React.Component {
     super(props);
   }
 
-  onChange(e) {
+  onChange = e => {
     if (e.target.files[0]) {
       const img = new Image();
 

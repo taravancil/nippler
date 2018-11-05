@@ -19,22 +19,22 @@ class Editor extends React.Component {
   }
 
   // Takes an Image `image` and updates the state
-  imageHandler(image) {
+  imageHandler = image => {
     this.setState({
       image: image,
       imageSet: true
     });
-  }
+  };
 
   // Creates a download link to the canvas as a data URL and clicks it
-  downloadCanvas() {
+  downloadCanvas = () => {
     const src = document.getElementById("nippler-canvas").toDataURL();
     let a = document.createElement("a");
     a.href = src;
     a.download = "nippler.jpg";
     document.body.appendChild(a);
     a.click();
-  }
+  };
 
   updateNippleImage = e => {
     let image = new Image();
@@ -69,6 +69,7 @@ class Editor extends React.Component {
             image={this.state.image}
           />
         </div>
+
         <Controls
           downloadCanvas={this.downloadCanvas}
           handleImage={this.imageHandler}
