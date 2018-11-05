@@ -1,33 +1,21 @@
 import React from "react";
 
-const nipples = [
-  "/assets/images/n1.png",
-  "/assets/images/n2.png",
-  "/assets/images/n3.png",
-  "/assets/images/n4.png",
-  "/assets/images/n5.png",
-  "/assets/images/n6.png",
-  "/assets/images/n7.png",
-  "/assets/images/n8.png",
-  "/assets/images/n9.png",
-  "/assets/images/n10.png"
-];
+const nipples = new Array(10);
+nipples.fill(1);
 
 const NippleGallery = ({ handler }) => (
-  <div className="gallery">
+  <div className="nipple-gallery flex">
     {nipples.map((nipple, i) => (
-      <div key={i}>
+      <label key={i} htmlFor={"nipple-" + i} className="nipple">
         <input
           name="nipple-type"
           id={"nipple-" + i}
           type="radio"
           onClick={handler}
-          value={nipple}
+          value={"/assets/images/n" + (i + 1) + ".png"}
         />
-        <label key={i} htmlFor={"nipple-" + i} className="gallery__nipple">
-          <img src={nipple} width="50" height="50" />
-        </label>
-      </div>
+        <img src={"/assets/images/n" + (i + 1) + ".png"} />
+      </label>
     ))}
   </div>
 );

@@ -1,37 +1,25 @@
-.gallery {
+.nipple-gallery {
   width: 100%;
-  max-width: 358px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column wrap;
-  justify-content: center;
   overflow-x: auto;
   overflow-y: hidden;
-  background: #f7f7f7;
-  padding: 0.8em 0.4em;
-  height: 175px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 70px);
+  grid-gap: 15px;
 }
 
-.gallery__nipple {
-  transition: border-color 0.1s ease;
-  border: 3px solid transparent;
+.nipple {
+  position: relative;
   display: block;
-  padding: 0.3em 0.3em 0 0.3em;
-  margin: 0 0.1em;
-}
-
-.gallery label {
-  border-radius: 3px;
   cursor: pointer;
+  border: 3px solid transparent;
 }
 
-.gallery input {
+.nipple input {
   display: none;
 }
 
-.gallery label:hover,
-.gallery input:checked + label,
-.gallery input:focus + label {
-  background: #dedede;
-  background: blue;
+.nipple:hover,
+.nipple input:checked + label,
+.nipple input:focus + label {
+  background: @text;
 }
