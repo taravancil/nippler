@@ -1,0 +1,24 @@
+button {
+  // reset
+  background: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  border: 0;
+}
+
+.btn {
+  margin-left: 5px;
+  padding: 8px 20px;
+  background: @skin-4;
+  border: 2px solid @skin-4;
+  border-radius: 40px;
+  color: @offwhite;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: lighten(@skin-4, 13%);
+  }
+}
