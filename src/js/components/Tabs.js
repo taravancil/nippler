@@ -7,6 +7,8 @@ class Tabs extends React.Component {
     this.state = {
       activeIndex: 0
     };
+
+    this.updateActive = this.updateActive.bind(this);
   }
 
   shouldComponentUpdate(_, nextState) {
@@ -20,17 +22,31 @@ class Tabs extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="tabs">
           {this.props.tabs.map((tab, i) => (
-            <button onClick={this.updateActive} key={i} data-index={i}>
+            <button
+              onClick={this.updateActive}
+              className={
+                this.state.activeIndex == i ? "tab tab--active" : "tab"
+              }
+              key={i}
+              data-index={i}
+            >
               {tab}
             </button>
           ))}
         </div>
 
-        <div>
+        <div className="tab-contents">
           {this.props.content.map((node, j) => (
-            <div className="tab__content" key={"tab-content-" + j}>
+            <div
+              className={
+                this.state.activeIndex == j
+                  ? "tab-content tab-content--active"
+                  : "tab-content"
+              }
+              key={"tab-content-" + j}
+            >
               {node}
             </div>
           ))}
