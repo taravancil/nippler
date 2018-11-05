@@ -8,7 +8,7 @@
   "author": "Tara Vancil <contact@taravancil.com>",
   "scripts": {
     "build": "webpack --mode production; lessc src/less/index.less dist/css/index.css --clean-css",
-    "start": "less-watch-compiler & webpack -w --mode development & browser-sync start --server dist --watchi"
+    "start": "less-watch-compiler & webpack -w --mode development & browser-sync start --server dist --watch"
   },
   "license": "MIT",
   "bugs": {
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
