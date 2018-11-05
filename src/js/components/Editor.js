@@ -48,28 +48,14 @@ class Editor extends React.Component {
 
   render() {
     let downloadBtn = null;
+    let controls = null;
+
     if (this.state.imageSet) {
       downloadBtn = (
-        <Button
-          handler={this.downloadCanvas}
-          style={!this.state.imageSet ? "" : { display: "none" }}
-        >
-          Download &darr;
-        </Button>
+        <Button handler={this.downloadCanvas}>Download &darr;</Button>
       );
-    }
-    return (
-      <div>
-        <div className="canvas-container">
-          {downloadBtn}
-          <ImageUploader imageHandler={this.imageHandler} />
-          <Canvas
-            nippleRadius={this.state.nippleRadius}
-            nippleStyle={this.state.nippleStyle}
-            image={this.state.image}
-          />
-        </div>
 
+      controls = (
         <Controls
           downloadCanvas={this.downloadCanvas}
           handleImage={this.imageHandler}
@@ -77,6 +63,23 @@ class Editor extends React.Component {
           updateNippleRadius={this.updateNippleRadius}
           disabled={!this.state.imageSet}
         />
+      );
+    }
+    return (
+      <div>
+        <div className="canvas-container">
+          <div className="image-controls">
+            {downloadBtn}
+            <ImageUploader imageHandler={this.imageHandler} />
+          </div>
+
+          <Canvas
+            nippleRadius={this.state.nippleRadius}
+            nippleStyle={this.state.nippleStyle}
+            image={this.state.image}
+          />
+        </div>
+        {controls}
       </div>
     );
   }
