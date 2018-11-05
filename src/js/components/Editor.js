@@ -10,8 +10,8 @@ class Editor extends React.Component {
     super(props);
 
     this.state = {
-      nippleRadius: 15,
-      nippleStyle: "blue",
+      nippleRadius: 30,
+      nippleStyle: "peachpuff",
       nippleNum: 2,
       image: null,
       imageSet: false
@@ -36,19 +36,15 @@ class Editor extends React.Component {
     a.click();
   }
 
-  updateNippleEmoji(char) {
-    this.setState({ nippleStyle: char });
-  }
-
-  updateNippleImage(e) {
+  updateNippleImage = e => {
     let image = new Image();
     image.src = e.target.value;
     this.setState({ nippleStyle: image });
-  }
+  };
 
-  updateNippleRadius(e) {
+  updateNippleRadius = e => {
     this.setState({ nippleRadius: e.target.value });
-  }
+  };
 
   render() {
     let downloadBtn = null;
@@ -76,11 +72,9 @@ class Editor extends React.Component {
         <Controls
           downloadCanvas={this.downloadCanvas}
           handleImage={this.imageHandler}
-          handleEmoji={this.updateNippleEmoji}
           handleNipple={this.updateNippleImage}
           updateNippleRadius={this.updateNippleRadius}
           disabled={!this.state.imageSet}
-          nippleStyle={this.state.nippleStyle}
         />
       </div>
     );

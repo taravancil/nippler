@@ -1,68 +1,134 @@
 import React from "react";
-import Emoji from "./Emoji.js";
 
 class EmojiKeyboard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      chars: [],
-      categories: []
+      emoji: [],
+      q: "",
+      searchResults: [],
+      searchTimeout: null,
+      scrollTimeout: null,
+      selected: null
     };
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.lazyLoad = this.lazyLoad.bind(this);
   }
 
   componentWillMount() {
     this.req = new XMLHttpRequest();
 
     this.req.onload = () => {
-      let res = JSON.parse(this.req.response);
-
+      const emoji = JSON.parse(this.req.response);
       this.setState({
-        chars: res.chars,
-        categories: res.categories
+        emoji,
+        searchResults: emoji
       });
     };
 
     this.req.open("GET", "/assets/emoji.json");
     this.req.send();
+
+    this.lazyLoad();
   }
 
-  setSelected(char) {
-    this.setState({ selected: char });
+  componentDidMount() {
+    document
+      .querySelector(".emoji-chars")
+      .addEventListener("scroll", this.lazyLoad);
   }
 
   componentWillUnmount() {
     // Cancel pending XHR
     this.req.abort();
+
+    document
+      .querySelector(".emoji-chars")
+      .removeEventListener("scroll", this.lazyLoad);
+  }
+
+  lazyLoad() {
+    const els = document.querySelectorAll("[data-src]");
+
+    // only check 50 at a time
+    const limit = els.length > 50 ? 50 : els.length;
+    for (let i = 0; i < limit; i++) {
+      const el = els[i];
+      if (this.isInViewport(el)) {
+        el.src = el.getAttribute("data-src");
+        el.removeAttribute("data-src");
+      }
+    }
+  }
+
+  handleSearch(e) {
+    clearTimeout(this.searchTimeout);
+
+    const q = e.target.value;
+
+    const searchTimeout = setTimeout(() => {
+      let searchResults = [];
+      if (!q.length) {
+        searchResults = emoji;
+      }
+
+      if (this.state.q.length && q.startsWith(this.state.q)) {
+        searchResults = this.state.searchResults.filter(e => e.includes(q));
+      } else {
+        searchResults = this.state.emoji.filter(e =>
+          e.split("skin-tone")[0].includes(q)
+        );
+      }
+      this.setState({ searchResults, q });
+    }, 350);
+
+    this.setState({ searchTimeout });
+  }
+
+  isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+
+    return (
+      rect.right >= 0 &&
+      rect.left <=
+        (window.innerWidth + 150 || document.documentElement.clientWidth + 150)
+    );
   }
 
   render() {
     return (
-      <div className="emoji-keyboard">
-        <div className="emoji-categories">
-          {this.state.categories.map((category, i) => (
-            <a
-              key={i}
-              href={"#emoji-" + category.title}
-              className="emoji-category"
-            >
-              <svg viewBox="0 0 24 24">
-                <title>{category.title}</title>
-                <path d={category.icon} />
-              </svg>
-            </a>
-          ))}
-        </div>
+      <div>
+        <input
+          className="emoji-search"
+          type="text"
+          onKeyUp={this.handleSearch}
+          placeholder="Search"
+        />
         <div className="emoji-chars">
-          {this.state.chars.map((emoji, i) => (
-            <Emoji
-              key={i}
-              char={emoji.char}
-              options={emoji.mods}
-              category={emoji.cat}
-              selected={emoji.char === this.state.selected ? true : false}
-              handler={this.props.handler}
-            />
+          {this.state.searchResults.map((emoji, i) => (
+            <label key={i} htmlFor={"emoji-" + i} className="emoji-container">
+              <input
+                className="emoji-input"
+                name="emoji"
+                id={"emoji-" + i}
+                type="radio"
+                value={"/assets/images/emoji/" + emoji + ".png"}
+                onClick={this.props.handler}
+              />
+              <img
+                className="emoji-char"
+                width="35"
+                height="35"
+                src={
+                  i < 50
+                    ? "/assets/images/emoji/" + emoji + ".png"
+                    : "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fbarbaracartategui.files.wordpress.com%2F2010%2F11%2Fpizza-pepperoni.jpg&u=https://barbaracartategui.files.wordpress.com/2010/11/pizza-pepperoni.jpg"
+                }
+                data-src={"/assets/images/emoji/" + emoji + ".png"}
+              />
+            </label>
           ))}
         </div>
       </div>

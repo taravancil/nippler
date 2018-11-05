@@ -186,7 +186,7 @@ class Canvas extends React.Component {
 
     // Force an update since a re-render is never triggered during onDrag
     this.forceUpdate();
-  }
+  };
 
   stopDragging() {
     this.setState({ dragging: false });
@@ -198,16 +198,14 @@ class Canvas extends React.Component {
     this.ctx.drawImage(image, 0, 0, image.width, image.height);
   }
 
-  drawNipples() {
-    // nippleStyle can be the color 'blue', an image, or an emoji character
+  drawNipples = () => {
+    // nippleStyle can be the color 'peachpuff' or an image
     const style = this.props.nippleStyle;
     let drawFunc;
 
     // Determine which drawing function to use
-    if (style === "blue") {
+    if (style === "peachpuff") {
       drawFunc = this.drawNipplePlain;
-    } else if (typeof style === "string") {
-      drawFunc = this.drawNippleEmoji;
     } else {
       drawFunc = this.drawNippleImage;
     }
@@ -223,22 +221,21 @@ class Canvas extends React.Component {
     this.ctx.beginPath();
     this.ctx.arc(x, y, radius, 0, Math.PI * 2, false);
     this.ctx.closePath();
-    this.ctx.fillStyle = "blue";
+    this.ctx.fillStyle = "peachpuff";
     this.ctx.fill();
-  }
-
-  // Draws an emoji on the canvas
-  drawNippleEmoji(x, y, radius) {
-    // Adjust font size
-    this.ctx.font = `${radius * 2.1}px Arial`;
-    this.ctx.fillText(this.props.nippleStyle, x - radius, y + 15);
-  }
+  };
 
   // Draws a nipple image on the canvas
-  drawNippleImage(x, y, radius) {
-    const d = radius * 2;
-    this.ctx.drawImage(this.props.nippleStyle, x - radius, y - radius, d, d);
-  }
+  drawNippleImage = (x, y, radius) => {
+    const diameter = radius * 2;
+    this.ctx.drawImage(
+      this.props.nippleStyle,
+      x - radius,
+      y - radius,
+      diameter,
+      diameter
+    );
+  };
 
   // Clears the canvas
   clear() {
@@ -266,8 +263,8 @@ class Canvas extends React.Component {
 
 Canvas.defaultProps = {
   image: null,
-  nippleStyle: "blue",
-  nippleRadius: 15
+  nippleStyle: "peachpuff",
+  nippleRadius: 30
 };
 
 export default Canvas;

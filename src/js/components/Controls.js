@@ -4,20 +4,13 @@ import Tabs from "./Tabs";
 
 import React from "react";
 
-const Controls = ({
-  disabled,
-  handleEmoji,
-  handleNipple,
-  updateNippleRadius,
-  nippleStyle
-}) => (
+const Controls = ({ disabled, handleNipple, updateNippleRadius }) => (
   <div className="controls">
-    <p>type</p>
     <Tabs
       tabs={["nipples", "emoji"]}
       content={[
         <NippleGallery handler={handleNipple} />,
-        <EmojiKeyboard handler={handleEmoji} active={nippleStyle} />
+        <EmojiKeyboard handler={handleNipple} />
       ]}
     />
     <p className="controls__size">
