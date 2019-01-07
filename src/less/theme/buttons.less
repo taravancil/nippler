@@ -8,7 +8,6 @@ button {
 }
 
 .btn {
-  margin-left: 5px;
   padding: 8px 20px;
   background: @skin-4;
   border: 2px solid @skin-4;
@@ -17,6 +16,10 @@ button {
   font-weight: bold;
   text-align: center;
   cursor: pointer;
+
+  &:not(:first-child) {
+    margin-left: 5px;
+  }
 
   &:hover {
     background: lighten(@skin-4, 13%);
