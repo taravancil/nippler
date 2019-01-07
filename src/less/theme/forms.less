@@ -1,5 +1,72 @@
 label {
-  font-size: 16px;
-  font-weight: 500;
   margin: 0 5px 0 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input {
+  font-size: inherit;
+  font-family: "Courier New", monospace;
+}
+
+input[type="text"] {
+  outline: none;
+  background: tint(@bg, 55%);
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid shade(@bg, 35%);
+  border-radius: 40px;
+  margin: 0 0 0 5px;
+  padding: 5px 15px;
+
+  &:focus {
+    background: @bg;
+    border-color: @text;
+  }
+}
+
+input[type="range"] {
+  margin: 0 10px;
+  border-radius: 4px;
+}
+
+legend {
+  height: 0;
+  opacity: 0;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+input[type="range"]:focus {
+  outline: 1px dotted @text;
+  box-shadow: none;
+}
+
+.custom-toggle-input-container {
+  position: relative;
+}
+
+.custom-toggle-input {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  z-index: 3000;
+  cursor: pointer;
+}
+
+.custom-toggle-input-decorator {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }

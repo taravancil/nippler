@@ -4,8 +4,8 @@ import Tabs from "./Tabs";
 
 import React from "react";
 
-const Controls = ({ disabled, handleNipple, updateNippleRadius }) => (
-  <div className="controls">
+const Controls = ({ disabled, handleNipple }) => (
+  <div className={disabled ? "hidden" : "" + "controls"}>
     <Tabs
       tabs={["nipples", "emoji"]}
       content={[
@@ -13,20 +13,6 @@ const Controls = ({ disabled, handleNipple, updateNippleRadius }) => (
         <EmojiKeyboard handler={handleNipple} />
       ]}
     />
-
-    <div className="flex">
-      <label htmlFor="nipple-size">size</label>
-      <input
-        name="nipple-size"
-        type="range"
-        min="5"
-        max="100"
-        step="1"
-        defaultValue="15"
-        disabled={disabled}
-        onInput={updateNippleRadius}
-      />
-    </div>
   </div>
 );
 

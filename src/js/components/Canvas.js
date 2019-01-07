@@ -19,23 +19,7 @@ class Canvas extends React.Component {
     // Create blank canvas to check if the browser supports <canvas>
     const canvas = document.createElement("canvas");
     this.setState({ canvasSupported: !!canvas.getContext("2d") });
-
-    // Construct this.nipples
-    this.nipples = [];
-    let position = this.props.nippleRadius + 5;
-
-    this.nipples = [
-      {
-        x: this.props.nippleRadius * 2,
-        y: this.props.nippleRadius + 5,
-        rad: this.props.nippleRadius
-      },
-      {
-        x: this.props.nippleRadius * 4 + 10,
-        y: this.props.nippleRadius + 5,
-        rad: this.props.nippleRadius
-      }
-    ];
+    this.nipples = this.constructNipples(this.props.nippleNumber);
   }
 
   componentDidMount() {
@@ -48,11 +32,9 @@ class Canvas extends React.Component {
   componentWillReceiveProps(nextProps) {
     const canvasContainer = document.querySelector(".canvas-container");
 
-    this.resize(
-      [this.canvas],
-      canvasContainer.clientWidth,
-      canvasContainer.clientHeight
-    );
+    if (nextProps.nippleNumber !== this.props.nippleNumber) {
+      this.nipples = this.constructNipples(nextProps.nippleNumber);
+    }
 
     // Is this the first time a background has been set?
     const isFirstImage = this.props.image === null && nextProps.image !== null;
@@ -64,9 +46,15 @@ class Canvas extends React.Component {
     const isNewRadius = this.props.nippleRadius !== nextProps.nippleRadius;
 
     if (isFirstImage || isNewImage) {
+      // resize the canvas to fit the image
+      this.resize(
+        [this.canvas],
+        canvasContainer.clientWidth,
+        canvasContainer.clientHeight
+      );
+
       // We need to draw the image
       let image = nextProps.image;
-      this.setState({ image: image });
 
       if (image.height > this.canvas.height) {
         const scaleY = this.getScale(this.canvas.height, image.height);
@@ -80,6 +68,7 @@ class Canvas extends React.Component {
       }
       this.resize([this.canvas], image.width, image.height);
 
+      this.setState({ image: image });
       this.ctx = this.canvas.getContext("2d");
     }
 
@@ -96,6 +85,20 @@ class Canvas extends React.Component {
         maxY: maxY
       });
     }
+  }
+
+  constructNipples(n) {
+    const nipples = [];
+
+    while (nipples.length < n) {
+      const i = nipples.length;
+      nipples.push({
+        x: this.props.nippleRadius * 2 * i + this.props.nippleRadius,
+        y: this.props.nippleRadius + 5,
+        rad: this.props.nippleRadius
+      });
+    }
+    return nipples;
   }
 
   resize(targets, width, height) {
@@ -212,7 +215,6 @@ class Canvas extends React.Component {
 
     // Draw the nipples in this.nipples
     for (let nipple of this.nipples) {
-      console.log("(", nipple.x, ",", nipple.y, ")");
       drawFunc(nipple.x, nipple.y, this.props.nippleRadius);
     }
   };

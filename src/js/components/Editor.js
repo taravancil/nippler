@@ -4,6 +4,9 @@ import Canvas from "./Canvas";
 import Controls from "./Controls";
 import Button from "./Button";
 import ImageUploader from "./ImageUploader";
+import EmojiKeyboard from "./EmojiKeyboard";
+import NippleGallery from "./NippleGallery";
+import Tabs from "./Tabs";
 
 class Editor extends React.Component {
   constructor(props) {
@@ -12,7 +15,8 @@ class Editor extends React.Component {
     this.state = {
       nippleRadius: 30,
       nippleStyle: "peachpuff",
-      nippleNum: 2,
+      nippleNumber: 2,
+      currentNippleIdx: 1,
       image: null,
       imageSet: false
     };
@@ -37,9 +41,10 @@ class Editor extends React.Component {
   };
 
   updateNippleImage = e => {
+    const currentNippleIdx = e.target.id.split("nipple-")[1];
     let image = new Image();
     image.src = e.target.value;
-    this.setState({ nippleStyle: image });
+    this.setState({ nippleStyle: image, currentNippleIdx });
   };
 
   updateNippleRadius = e => {
@@ -50,36 +55,63 @@ class Editor extends React.Component {
     let downloadBtn = null;
     let controls = null;
 
-    if (this.state.imageSet) {
-      downloadBtn = (
-        <Button handler={this.downloadCanvas}>Download &darr;</Button>
-      );
-
-      controls = (
-        <Controls
-          downloadCanvas={this.downloadCanvas}
-          handleImage={this.imageHandler}
-          handleNipple={this.updateNippleImage}
-          updateNippleRadius={this.updateNippleRadius}
-          disabled={!this.state.imageSet}
-        />
-      );
-    }
     return (
       <div>
         <div className="canvas-container">
-          <div className="image-controls">
-            {downloadBtn}
-            <ImageUploader imageHandler={this.imageHandler} />
+          <div className="controls-controls flex">
+            <div>
+              <div
+                className={
+                  this.state.imageSet ? "size-controls inline-flex" : "hidden"
+                }
+              >
+                <label htmlFor="nipple-size">size</label>
+                <input
+                  name="nipple-size"
+                  type="range"
+                  min="5"
+                  max="100"
+                  step="1"
+                  defaultValue="15"
+                  onInput={this.updateNippleRadius}
+                />
+              </div>
+            </div>
+
+            <div className="image-controls inline-flex">
+              <Button
+                className={this.state.imageSet ? "" : "hidden"}
+                handler={this.downloadCanvas}
+              >
+                Download &darr;
+              </Button>
+
+              <ImageUploader imageHandler={this.imageHandler} />
+            </div>
           </div>
 
           <Canvas
             nippleRadius={this.state.nippleRadius}
             nippleStyle={this.state.nippleStyle}
+            nippleNumber={this.state.nippleNumber}
             image={this.state.image}
           />
         </div>
-        {controls}
+
+        <div className="container">
+          <div className={this.state.imageSet ? "" : "hidden " + "controls"}>
+            <Tabs
+              tabs={["nipples", "emoji"]}
+              content={[
+                <NippleGallery
+                  currentNippleIdx={this.state.currentNippleIdx}
+                  handler={this.updateNippleImage}
+                />,
+                <EmojiKeyboard handler={this.updateNippleImage} />
+              ]}
+            />
+          </div>
+        </div>
       </div>
     );
   }

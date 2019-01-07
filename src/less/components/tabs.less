@@ -1,16 +1,19 @@
 .tabs {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 15px;
 }
 
 .tab {
   cursor: pointer;
-  margin: 20px 3px 0 0;
-  padding: 7px 15px;
+  margin: 20px 3px -1px 0;
+  padding: 7px 15px 8px 15px;
   font-size: 16px;
 }
 
 .tab--active {
   background: @offwhite;
+  border: 1px solid shade(@bg, 35%);
+  border-radius: 4px 4px 0 0;
+  border-bottom: 0;
   color: @text;
   font-weight: bold;
 }
@@ -18,6 +21,8 @@
 .tab-content {
   display: none;
   background: @offwhite;
+  border: 1px solid shade(@bg, 35%);
+  border-radius: 4px;
   padding: 10px;
 }
 
