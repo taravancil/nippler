@@ -2,16 +2,18 @@
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 70px);
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, 66px);
 }
 
 .nipple {
   position: relative;
   display: block;
+  height: 61px;
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  text-align: center;
   cursor: pointer;
-  border: 3px solid transparent;
 }
 
 .nipple input {
@@ -21,5 +23,7 @@
 .nipple:hover,
 .nipple input:checked + label,
 .nipple input:focus + label {
-  background: @text;
+  background: @bg;
+  border-radius: 4px;
+  border: 1px solid @text;
 }
